@@ -66,6 +66,8 @@
     /* Update Clock
     -------------------------------------------------------------------------*/
     var updateClock = () => {
+        if (!$(".clock").length) return;
+
         function startClocks(selector = ".clock") {
             function updateClock() {
                 const now = new Date();
@@ -84,6 +86,8 @@
     -------------------------------------------------------------------------*/
     var cursorTrail = () => {
         const canvas = document.getElementById("trail");
+        if (!canvas) return;
+
         const ctx = canvas.getContext("2d");
         let w = window.innerWidth,
             h = window.innerHeight;
@@ -189,19 +193,23 @@
     /* Open Menu
     -------------------------------------------------------------------------*/
     var openMbMenu = () => {
-        $(".open-mb-menu").on("click", function () {
+        $(".open-mb-menu").on("click", function (event) {
+            event.preventDefault();
             $(".offcanvas-menu").addClass("show");
-            $("body").toggleClass("overflow-hidden");
+            $("body").addClass("overflow-hidden");
         });
 
-        $(".close-mb-menu").on("click", function () {
+        $(".close-mb-menu").on("click", function (event) {
+            event.preventDefault();
             $(".offcanvas-menu").removeClass("show");
-            $("body").toggleClass("overflow-hidden");
+            $("body").removeClass("overflow-hidden");
         });
     };
     /* switchprice
     -------------------------------------------------------------------------*/
     var switchPrice = () => {
+        if (!$("#pricingSwitch").length && !$(".price-number").length) return;
+
         function formatUSD(n) {
             return '$' + Number(n).toLocaleString('en-US');
         }
@@ -228,6 +236,8 @@
     /* services_btn
     -------------------------------------------------------------------------*/
     var services_btn = () => {
+        if (!$(".services-image-btn").length || !$(".services-image").length) return;
+
         $('.services-image-btn').on('click', function(){
             if(!$(this).hasClass('active-img')) {
                 $('.services-image-btn').removeClass('active-img');
@@ -243,13 +253,14 @@
     };
     // counter
     var counter = function () {
-        if ($(document.body).hasClass("counter-scroll")) {
+        var $counter = $(".counter");
+        if ($(document.body).hasClass("counter-scroll") && $counter.length) {
           var a = 0;
-          $(window).scroll(function () {
-            var oTop = $(".counter").offset().top - window.innerHeight;
+          $(window).on("scroll", function () {
+            var oTop = $counter.offset().top - window.innerHeight;
             if (a == 0 && $(window).scrollTop() > oTop) {
               if ($().countTo) {
-                $(".counter")
+                $counter
                   .find(".number")
                   .each(function () {
                     var to = $(this).data("to"),
