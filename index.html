@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Teknalis | Webs, automatizaciones e inteligencia artificial</title>
+    <meta name="author" content="Teknalis">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Creamos sitios web, automatizaciones e implementaciones de inteligencia artificial para ayudar a empresas a operar mejor, vender mas y ahorrar tiempo.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/icon/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/slick.theme.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/teknalis.css">
+
+    <link rel="shortcut icon" href="assets-teknalis/icon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets-teknalis/icon.png">
+</head>
+
+<body class="counter-scroll">
+    <canvas class="cursor-trail" id="trail" style="display: none;"></canvas>
+
+    <button id="goTop" aria-label="Volver arriba">
+        <span class="border-progress"></span>
+        <span class="ic-wrap">
+            <span class="icon icon-long-arrow-alt-up-solid"></span>
+        </span>
+    </button>
+
+    <main id="wrapper">
+        <header class="tf-header header2">
+            <div class="header-inner">
+                <a href="#inicio" class="logo-site teknalis-logo" aria-label="Teknalis">
+                    <img src="assets-teknalis/logo-horizontal.png" alt="Teknalis">
+                </a>
+                <nav class="box-navigation" aria-label="Navegacion principal">
+                    <ul class="nav-menu-main">
+                        <li class="menu-item"><a href="#inicio" class="item-link link1 active">Inicio</a></li>
+                        <li class="menu-item"><a href="#servicios" class="item-link link1">Servicios</a></li>
+                        <li class="menu-item"><a href="#proceso" class="item-link link1">Proceso</a></li>
+                        <li class="menu-item"><a href="#casos" class="item-link link1">Casos</a></li>
+                        <li class="menu-item"><a href="blog.html" class="item-link link1">Blog</a></li>
+                        <li class="menu-item"><a href="#contacto" class="item-link link1">Contacto</a></li>
+                    </ul>
+                </nav>
+                <a href="#contacto" class="tf-btn d-lg-flex d-none">Hablemos</a>
+                <a href="#" class="tf-btn open-mb-menu mobile-menu d-lg-none d-flex" aria-label="Abrir menu">
+                    <i class="icon icon-grip-lines-solid"></i>
+                </a>
+            </div>
+        </header>
+
+        <section id="inicio" class="section-hero teknalis-hero">
+            <div class="hero-image"></div>
+            <div class="container">
+                <div class="content-wrap text-center">
+                    <div class="sub fw-semibold">
+                        <span class="tek-dot"></span>
+                        Tecnologia aplicada a procesos reales
+                    </div>
+                    <h1 class="title text-display-2">
+                        <span class="title1 fw-semibold text-gradient-1">Menos tareas manuales.</span>
+                        <br>
+                        <span class="title2 fw-semibold text-gradient-1">Mas tiempo para hacer crecer tu negocio.</span>
+                    </h1>
+                    <p class="text">
+                        Creamos sitios web, automatizaciones e implementaciones de inteligencia artificial para ayudar a empresas a operar mejor, vender mas y ahorrar tiempo.
+                    </p>
+                    <div class="bot-btns">
+                        <a href="#contacto" class="tf-btn">Hablemos de tu proyecto</a>
+                        <a href="#casos" class="tf-btn-2">Ver casos</a>
+                    </div>
+                </div>
+            </div>
+            <a href="#servicios" class="scroll-more">
+                <span class="fw-semibold link1">Ver servicios</span>
+                <i class="icon icon-long-arrow-alt-down-solid"></i>
+            </a>
+        </section>
+
+        <section id="servicios" class="section-services flat-spacing">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-xxl-4 col-lg-6">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                            <div class="col-left">
+                                <div class="heading-section mb-48">
+                                    <div class="heading-sub fw-semibold effectFade fadeUp">Servicios</div>
+                                    <h2 class="heading-title services-title text-gradient-3 effectFade fadeRotateX">Soluciones digitales <br> para operar mejor</h2>
+                                </div>
+                                <p class="effectFade fadeUp">Combinamos desarrollo web, automatizacion, IA e integraciones para resolver problemas concretos del negocio.</p>
+                            </div>
+                            <div class="services-placeholder effectFade fadeUp">
+                                <img src="assets-teknalis/logo-isotipo.png" alt="">
+                                <span>Web + Automatizacion + IA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-7 col-lg-6">
+                        <div class="accordion-faq_list" id="accordion-services">
+                            <div class="accordion-faq_item effectFade fadeUp">
+                                <div class="accordion-action active-img" data-bs-target="#service-1" role="button" data-bs-toggle="collapse" aria-controls="service-1" aria-expanded="true">
+                                    <div class="accordion-title">Sitios web profesionales <div class="text-body-1 num">(01)</div></div>
+                                </div>
+                                <div id="service-1" class="collapse show" data-bs-parent="#accordion-services">
+                                    <div class="accordion-content">
+                                        <div class="text-body-3 text-neutral-300 text">Diseñamos y desarrollamos sitios modernos, rapidos y preparados para transmitir confianza desde el primer contacto.</div>
+                                        <div class="list-tags">
+                                            <span class="tags-item fw-semibold">Institucionales</span>
+                                            <span class="tags-item fw-semibold">Landing pages</span>
+                                            <span class="tags-item fw-semibold">Portales</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-faq_item effectFade fadeUp">
+                                <div class="accordion-action collapsed" data-bs-target="#service-2" role="button" data-bs-toggle="collapse" aria-controls="service-2" aria-expanded="false">
+                                    <div class="accordion-title">Automatizaciones <div class="text-body-1 num">(02)</div></div>
+                                </div>
+                                <div id="service-2" class="collapse" data-bs-parent="#accordion-services">
+                                    <div class="accordion-content">
+                                        <div class="text-body-3 text-neutral-300 text">Eliminamos tareas repetitivas conectando formularios, planillas, sistemas y procesos internos.</div>
+                                        <div class="list-tags">
+                                            <span class="tags-item fw-semibold">Planillas</span>
+                                            <span class="tags-item fw-semibold">Documentos</span>
+                                            <span class="tags-item fw-semibold">Flujos internos</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-faq_item effectFade fadeUp">
+                                <div class="accordion-action collapsed" data-bs-target="#service-3" role="button" data-bs-toggle="collapse" aria-controls="service-3" aria-expanded="false">
+                                    <div class="accordion-title">Inteligencia Artificial <div class="text-body-1 num">(03)</div></div>
+                                </div>
+                                <div id="service-3" class="collapse" data-bs-parent="#accordion-services">
+                                    <div class="accordion-content">
+                                        <div class="text-body-3 text-neutral-300 text">Implementamos IA aplicada a casos reales: atencion, analisis, generacion de documentos, clasificacion de informacion y asistencia operativa.</div>
+                                        <div class="list-tags">
+                                            <span class="tags-item fw-semibold">Asistentes</span>
+                                            <span class="tags-item fw-semibold">Analisis</span>
+                                            <span class="tags-item fw-semibold">Documentos</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-faq_item effectFade fadeUp">
+                                <div class="accordion-action collapsed" data-bs-target="#service-4" role="button" data-bs-toggle="collapse" aria-controls="service-4" aria-expanded="false">
+                                    <div class="accordion-title">Integraciones y sistemas internos <div class="text-body-1 num">(04)</div></div>
+                                </div>
+                                <div id="service-4" class="collapse" data-bs-parent="#accordion-services">
+                                    <div class="accordion-content">
+                                        <div class="text-body-3 text-neutral-300 text">Conectamos herramientas y desarrollamos soluciones a medida para ordenar el trabajo diario.</div>
+                                        <div class="list-tags">
+                                            <span class="tags-item fw-semibold">APIs</span>
+                                            <span class="tags-item fw-semibold">Dashboards</span>
+                                            <span class="tags-item fw-semibold">Sistemas a medida</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proceso" class="section-process flat-spacing pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="process-heading h-100">
+                            <div class="heading-section mb-80">
+                                <div class="heading-sub fw-semibold effectFade fadeUp">Proceso</div>
+                                <h2 class="heading-title text-gradient-3 effectFade fadeRotateX">De la necesidad a una solucion en uso</h2>
+                            </div>
+                            <div class="group-btn-slider">
+                                <button class="nav-prev-swiper" aria-label="Anterior"><i class="icon icon-angle-left-solid"></i></button>
+                                <button class="nav-next-swiper" aria-label="Siguiente"><i class="icon icon-angle-right-solid"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="process-slide">
+                            <div dir="ltr" class="swiper tf-swiper swiper-box-shadow" data-preview="1.78" data-tablet="2" data-mobile-sm="1" data-mobile="1" data-loop="false" data-center="false" data-space-lg="24" data-space-md="24" data-space="30">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <article class="process-card">
+                                            <i class="icon icon-search-solid"></i>
+                                            <div class="content">
+                                                <h3 class="title fw-semibold">Diagnostico</h3>
+                                                <p class="text text-secondary">Entendemos el problema, el proceso y el objetivo del negocio.</p>
+                                            </div>
+                                            <div class="bot"><div class="time fw-semibold">PASO</div><div class="number"><span class="text-neutral-400">01</span><span class="text-neutral-200">/04</span></div></div>
+                                        </article>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <article class="process-card">
+                                            <i class="icon icon-bezier-curve-solid"></i>
+                                            <div class="content">
+                                                <h3 class="title fw-semibold">Diseño de solucion</h3>
+                                                <p class="text text-secondary">Definimos una solucion simple, viable y alineada al resultado esperado.</p>
+                                            </div>
+                                            <div class="bot"><div class="time fw-semibold">PASO</div><div class="number"><span class="text-neutral-400">02</span><span class="text-neutral-200">/04</span></div></div>
+                                        </article>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <article class="process-card">
+                                            <i class="icon icon-bolt-solid"></i>
+                                            <div class="content">
+                                                <h3 class="title fw-semibold">Implementacion</h3>
+                                                <p class="text text-secondary">Desarrollamos, integramos y probamos la solucion.</p>
+                                            </div>
+                                            <div class="bot"><div class="time fw-semibold">PASO</div><div class="number"><span class="text-neutral-400">03</span><span class="text-neutral-200">/04</span></div></div>
+                                        </article>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <article class="process-card">
+                                            <i class="icon icon-chart-line-solid"></i>
+                                            <div class="content">
+                                                <h3 class="title fw-semibold">Mejora continua</h3>
+                                                <p class="text text-secondary">Ajustamos, medimos y optimizamos segun el uso real.</p>
+                                            </div>
+                                            <div class="bot"><div class="time fw-semibold">PASO</div><div class="number"><span class="text-neutral-400">04</span><span class="text-neutral-200">/04</span></div></div>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="casos" class="section-featured-works flat-spacing pt-0">
+            <div class="container">
+                <div class="heading-section center mb-48">
+                    <div class="heading-sub fw-semibold mx-auto effectFade fadeUp">Casos / proyectos</div>
+                    <h2 class="heading-title text-gradient-3 effectFade fadeRotateX">Trabajos desarrollados</h2>
+                </div>
+                <div class="featured-works-list position-relative teknalis-work-list">
+                    <article class="featured-works-item effectFade fadeUp no-div">
+                        <div class="image"><img src="assets-teknalis/et_consultores_mockup.png" alt="ET Consultores"></div>
+                        <div class="content">
+                            <div class="bot">
+                                <h3 class="heading fw-semibold">ET Consultores</h3>
+                                <div class="grid-text">
+                                    <div class="item"><div class="title text-secondary">DESCRIPCION</div><div class="text-body-3 fw-semibold">Sitio institucional para consultora de ingenieria.</div></div>
+                                    <div class="item"><div class="title text-secondary">TIPO</div><div class="fw-semibold text-body-3">Web profesional</div></div>
+                                    <div class="item"><div class="title text-secondary">AREA</div><div class="fw-semibold text-body-3">Ingenieria</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="featured-works-item effectFade fadeUp">
+                        <div class="image"><img src="assets-teknalis/tonnelier_mockup.png" alt="Estudio Tonnelier"></div>
+                        <div class="content">
+                            <div class="bot">
+                                <h3 class="heading fw-semibold">Estudio Tonnelier</h3>
+                                <div class="grid-text">
+                                    <div class="item"><div class="title text-secondary">DESCRIPCION</div><div class="text-body-3 fw-semibold">Rediseño web institucional para estudio profesional.</div></div>
+                                    <div class="item"><div class="title text-secondary">TIPO</div><div class="fw-semibold text-body-3">Rediseño web</div></div>
+                                    <div class="item"><div class="title text-secondary">AREA</div><div class="fw-semibold text-body-3">Servicios profesionales</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="featured-works-item effectFade fadeUp">
+                        <div class="image"><img src="assets-teknalis/inaes_mockup.png" alt="INAES"></div>
+                        <div class="content">
+                            <div class="bot">
+                                <h3 class="heading fw-semibold">INAES</h3>
+                                <div class="grid-text">
+                                    <div class="item"><div class="title text-secondary">DESCRIPCION</div><div class="text-body-3 fw-semibold">Automatizacion documental a partir de planillas.</div></div>
+                                    <div class="item"><div class="title text-secondary">TIPO</div><div class="fw-semibold text-body-3">Automatizacion</div></div>
+                                    <div class="item"><div class="title text-secondary">AREA</div><div class="fw-semibold text-body-3">Documentacion</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="featured-works-item effectFade fadeUp">
+                        <div class="image"><img src="assets-teknalis/defilippopropiedades_mockup.png" alt="De Filippo Propiedades"></div>
+                        <div class="content">
+                            <div class="bot">
+                                <h3 class="heading fw-semibold">De Filippo Propiedades</h3>
+                                <div class="grid-text">
+                                    <div class="item"><div class="title text-secondary">DESCRIPCION</div><div class="text-body-3 fw-semibold">Portal inmobiliario.</div></div>
+                                    <div class="item"><div class="title text-secondary">TIPO</div><div class="fw-semibold text-body-3">Portal web</div></div>
+                                    <div class="item"><div class="title text-secondary">AREA</div><div class="fw-semibold text-body-3">Inmobiliaria</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="featured-works-item effectFade fadeUp">
+                        <div class="image"><img src="assets-teknalis/ifts_mockup.png" alt="IFTS 16"></div>
+                        <div class="content">
+                            <div class="bot">
+                                <h3 class="heading fw-semibold">IFTS 16</h3>
+                                <div class="grid-text">
+                                    <div class="item"><div class="title text-secondary">DESCRIPCION</div><div class="text-body-3 fw-semibold">Sistema de certificados con validacion QR.</div></div>
+                                    <div class="item"><div class="title text-secondary">TIPO</div><div class="fw-semibold text-body-3">Sistema interno</div></div>
+                                    <div class="item"><div class="title text-secondary">AREA</div><div class="fw-semibold text-body-3">Educacion</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="diferencial" class="section-benefits flat-spacing pt-0">
+            <div class="container">
+                <div class="heading-section center mb-70">
+                    <div class="heading-sub fw-semibold effectFade fadeUp">Diferencial</div>
+                    <h2 class="heading-title text-gradient-3 effectFade fadeRotateX">Tecnologia aplicada a procesos reales.</h2>
+                </div>
+                <div class="row mb-24">
+                    <div class="col-lg-7">
+                        <div class="benefits-box benefits-progress">
+                            <div class="benefits-progress-inner">
+                                <div class="benefits-progress-item"><div class="progress-line" data-progress="82"></div><div class="progress-text fw-semibold"><i class="icon icon-clipboard-check-solid"></i> Menos trabajo manual</div></div>
+                                <div class="benefits-progress-item"><div class="progress-line" data-progress="76"></div><div class="progress-text fw-semibold"><i class="icon icon-plug-solid"></i> Procesos ordenados</div></div>
+                                <div class="benefits-progress-item"><div class="progress-line" data-progress="68"></div><div class="progress-text fw-semibold"><i class="icon icon-robot-solid"></i> IA con proposito</div></div>
+                            </div>
+                            <div class="content">
+                                <h3 class="fw-semibold title">No implementamos tecnologia por moda.</h3>
+                                <p class="text text-secondary">Diseñamos soluciones concretas para reducir trabajo manual, ordenar informacion y mejorar la operacion diaria de cada empresa.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="benefits-box benefits-step effectFade fadeUp">
+                            <div class="benefits-step-inner">
+                                <div class="line-step"></div>
+                                <div class="step-item"><i class="icon icon-check-solid"></i></div>
+                                <div class="step-item"><i class="icon icon-check-solid"></i></div>
+                                <div class="step-item"><i class="icon icon-check-solid"></i></div>
+                            </div>
+                            <div class="content">
+                                <h3 class="fw-semibold title">Soluciones que se usan</h3>
+                                <p class="text text-secondary">Priorizamos claridad, viabilidad y adopcion real para que cada entrega mejore el dia a dia del negocio.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-cta flat-spacing pt-0">
+            <div class="container">
+                <div class="teknalis-cta effectFade fadeUp">
+                    <div>
+                        <div class="heading-sub fw-semibold">CTA</div>
+                        <h2 class="heading-title">Hablemos sobre tu proyecto.</h2>
+                        <p>Contanos que necesitás mejorar y evaluamos la mejor forma de ayudarte.</p>
+                    </div>
+                    <a href="#contacto" class="tf-btn">Contactar</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="flat-spacing pt-0">
+            <div class="section-contact">
+                <div class="contact-image">
+                    <div class="contact-placeholder">
+                        <img src="assets-teknalis/logo-vertical.png" alt="Teknalis">
+                    </div>
+                </div>
+                <div class="contact-content">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="content-left">
+                                <div class="heading-section mb-48">
+                                    <div class="heading-sub fw-semibold effectFade fadeUp">Contacto</div>
+                                    <h2 class="heading-title text-gradient-3 effectFade fadeRotateX">Hablemos sobre tu proyecto.</h2>
+                                </div>
+                                <p class="effectFade fadeUp">Contanos que necesitás mejorar y evaluamos la mejor forma de ayudarte.</p>
+                                <div class="contact-item mb-20 effectFade fadeRotateX">
+                                    <div class="text-body-3 text-secondary">Email</div>
+                                    <a href="mailto:hola@teknalis.com" class="fw-semibold">hola@teknalis.com</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <form class="form-contact effectFade fadeUp" action="mailto:hola@teknalis.com" method="post" enctype="text/plain">
+                                <div class="cols mb-24">
+                                    <fieldset><input type="text" name="nombre" placeholder="Nombre" required></fieldset>
+                                    <fieldset><input type="email" name="email" placeholder="Email" required></fieldset>
+                                </div>
+                                <fieldset class="mb-24"><input type="text" name="empresa" placeholder="Empresa"></fieldset>
+                                <fieldset class="mb-24"><textarea name="mensaje" rows="5" placeholder="Que necesitás mejorar?" required></textarea></fieldset>
+                                <button type="submit" class="tf-btn">Contactar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="footer-inner">
+                    <div class="footer-left">
+                        <a href="#inicio" class="footer-logo"><img src="assets-teknalis/logo-horizontal.png" alt="Teknalis"></a>
+                        <p class="text-secondary">Menos tareas manuales. Mas tiempo para hacer crecer tu negocio.</p>
+                    </div>
+                    <div class="footer-right">
+                        <a href="#servicios" class="fw-semibold link-underline link1">Servicios</a>
+                        <a href="#proceso" class="fw-semibold link-underline link1">Proceso</a>
+                        <a href="#casos" class="fw-semibold link-underline link1">Casos</a>
+                        <a href="blog.html" class="fw-semibold link-underline link1">Blog</a>
+                        <a href="#contacto" class="fw-semibold link-underline link1">Contacto</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <span class="text-secondary">© 2026 Teknalis. Todos los derechos reservados.</span>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <div class="offcanvas-menu">
+        <div class="offcanvas-content">
+            <div class="container h-100">
+                <div class="offcanvas-content_wrapin">
+            <div class="canvas_head">
+                <a href="#inicio" class="mb-logo"><img src="assets-teknalis/logo-horizontal.png" alt="Teknalis"></a>
+                <div class="btn-mobile-menu close-mb-menu text-caption link">
+                    <i class="icon icon-times-solid"></i>
+                    CERRAR
+                </div>
+            </div>
+            <div class="canvas_center">
+                <ul class="nav-ul-mb">
+                    <li><div class="item"><a href="#inicio" class="mb-menu-link text-display-1"><span class="text">Inicio</span></a></div></li>
+                    <li><div class="item"><a href="#servicios" class="mb-menu-link text-display-1"><span class="text">Servicios</span></a></div></li>
+                    <li><div class="item"><a href="#proceso" class="mb-menu-link text-display-1"><span class="text">Proceso</span></a></div></li>
+                    <li><div class="item"><a href="#casos" class="mb-menu-link text-display-1"><span class="text">Casos</span></a></div></li>
+                    <li><div class="item"><a href="blog.html" class="mb-menu-link text-display-1"><span class="text">Blog</span></a></div></li>
+                    <li><div class="item"><a href="#contacto" class="mb-menu-link text-display-1"><span class="text">Contacto</span></a></div></li>
+                </ul>
+            </div>
+            <div class="canvas_foot">
+                <a href="mailto:hola@teknalis.com" class="text-caption text-neutral-200">hola@teknalis.com</a>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/countto.js"></script>
+    <script src="assets/js/carousel.js"></script>
+    <script src="assets/js/infinityslide.js"></script>
+    <script src="assets/js/ScrollSmooth.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/ScrollToPlugin.min.js"></script>
+    <script src="assets/js/gsapAnimation.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
