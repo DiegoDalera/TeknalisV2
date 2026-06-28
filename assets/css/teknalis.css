@@ -1077,3 +1077,185 @@ footer {
     font-size: 16px;
   }
 }
+
+
+/* ============================================================
+   CORRECCIONES DE DISEÑO — v2
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. HEADER — centrado en desktop (el template limita a 807px)
+   ---------------------------------------------------------- */
+.tf-header .header-inner,
+.tf-header.header2 .header-inner {
+  max-width: 1320px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* ----------------------------------------------------------
+   2. HERO — centrado correcto en todas las páginas
+   ---------------------------------------------------------- */
+.teknalis-hero .container,
+.servicios-page .servicios-hero .container,
+.blog-page .blog-hero .container {
+  max-width: 1320px;
+}
+
+.teknalis-hero .content-wrap {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* ----------------------------------------------------------
+   3. "Web + Automatización + IA" — integrar en el layout,
+      no dejar descolgado. Se muestra como parte del col-left
+      pero sin salir del flujo del acordeón
+   ---------------------------------------------------------- */
+.services-placeholder {
+  margin-top: 40px;
+  min-height: 200px;
+  border-radius: 12px;
+}
+
+@media (max-width: 991px) {
+  .services-placeholder {
+    display: none;  /* en tablet/mobile no aporta y queda raro */
+  }
+}
+
+/* ----------------------------------------------------------
+   4. FOOTER — reducir altura, más compacto
+   ---------------------------------------------------------- */
+.footer-inner {
+  padding: 36px 0 20px;
+  gap: 20px;
+}
+
+.footer-bottom {
+  padding: 16px 0 20px;
+}
+
+.footer-left p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+}
+
+.footer-right {
+  gap: 16px;
+}
+
+/* ----------------------------------------------------------
+   5. SERVICIOS page — cards con mejor contraste
+      Problema: fondo blanco + texto gris claro → ilegible
+   ---------------------------------------------------------- */
+
+/* Cards del acordeón en servicios.html */
+.servicios-page .accordion-faq_item.style-1 {
+  background: #ffffff;
+  border-color: rgba(14, 165, 233, 0.18);
+}
+
+/* Título del acordeón: negro fuerte */
+.servicios-page .accordion-faq_item.style-1 .accordion-title {
+  color: #0f172a !important;
+  font-weight: 800;
+}
+
+/* Texto de contenido dentro del acordeón */
+.servicios-page .accordion-faq_item.style-1 .accordion-content .text,
+.servicios-page .accordion-faq_item.style-1 .accordion-content p,
+.servicios-page .accordion-faq_item.style-1 .accordion-content li {
+  color: #1e293b !important;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Tags de servicios: más contraste */
+.servicios-page .tags-item {
+  color: #0f172a;
+  background: #f1f5f9;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  font-weight: 700;
+}
+
+/* Cards de detalle de servicio */
+.service-detail-card {
+  background: #ffffff;
+  border-color: rgba(14, 165, 233, 0.15);
+}
+
+.service-detail-card h3 {
+  color: #0f172a !important;
+  font-weight: 800;
+}
+
+.service-detail-card p {
+  color: #334155 !important;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Related cards */
+.related-card h3 {
+  color: #0f172a !important;
+  font-weight: 800;
+}
+
+.related-card p {
+  color: #334155 !important;
+}
+
+/* Tech panel */
+.tech-panel h2 {
+  color: #0f172a !important;
+}
+
+.tech-tags span {
+  color: #334155 !important;
+  font-weight: 700;
+}
+
+/* ----------------------------------------------------------
+   6. HOME — sección servicios: cards con fondo negro
+      el texto de accordion no se lee bien → mejorar contraste
+   ---------------------------------------------------------- */
+.section-services .accordion-faq_item {
+  background: #ffffff;
+  border-color: rgba(14, 165, 233, 0.15);
+}
+
+.section-services .accordion-title {
+  color: #0f172a !important;
+  font-weight: 700;
+}
+
+.section-services .accordion-content .text {
+  color: #334155 !important;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.section-services .tags-item {
+  color: #0f172a !important;
+  background: #f8fafc !important;
+  border-color: rgba(14, 165, 233, 0.25) !important;
+  font-weight: 700;
+}
+
+/* Número del acordeón */
+.section-services .accordion-title .num {
+  color: #94a3b8 !important;
+}
+
+/* Acordeón activo: título en azul */
+.section-services .accordion-action.active-img .accordion-title,
+.section-services .accordion-action[aria-expanded="true"] .accordion-title {
+  color: #0284c7 !important;
+}
+
