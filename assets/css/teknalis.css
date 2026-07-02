@@ -73,14 +73,14 @@ textarea {
 
 .tf-btn-2 {
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.22);
-  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.45) !important;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .tf-btn-2:hover {
   color: #0ea5e9;
-  border-color: #0ea5e9;
-  background: rgba(14, 165, 233, 0.08);
+  border-color: #0ea5e9 !important;
+  background: rgba(14, 165, 233, 0.1);
 }
 
 .section-services .tf-btn-2,
@@ -227,8 +227,11 @@ textarea {
 }
 
 .heading-sub {
-  color: #0ea5e9;
+  color: #0ea5e9 !important;
   opacity: 1 !important;
+  background: rgba(14, 165, 233, 0.08) !important;
+  border: 1px solid rgba(14, 165, 233, 0.2) !important;
+  box-shadow: none !important;
 }
 
 .heading-title {
@@ -1041,6 +1044,7 @@ footer {
 }
 
 @media (max-width: 575px) {
+
   .teknalis-logo img,
   .footer-logo img,
   .mb-logo img {
@@ -1188,7 +1192,8 @@ footer {
 
 @media (max-width: 991px) {
   .services-placeholder {
-    display: none;  /* en tablet/mobile no aporta y queda raro */
+    display: none;
+    /* en tablet/mobile no aporta y queda raro */
   }
 }
 
@@ -1207,7 +1212,7 @@ footer {
 .footer-left p {
   margin-top: 10px;
   font-size: 14px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .footer-right {
@@ -1410,7 +1415,7 @@ footer {
 
 .servicios-hero .scroll-more,
 .blog-hero .scroll-more {
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .servicios-hero .tf-btn-2,
@@ -1428,19 +1433,26 @@ footer {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-top: 8px;
+  align-items: stretch;
 }
 
 @media (max-width: 991px) {
-  .tek-diferencial-grid { grid-template-columns: 1fr; }
+  .tek-diferencial-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .tek-diferencial-card {
+  height: 100%;
   background: #ffffff;
   border: 1px solid rgba(14, 165, 233, 0.14);
   border-radius: 12px;
   padding: 28px 24px 24px;
   box-shadow: 0 4px 24px rgba(15, 23, 42, 0.05);
   transition: border-color 0.25s ease, transform 0.25s ease;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .tek-diferencial-card:hover {
@@ -1477,10 +1489,648 @@ footer {
 }
 
 .tek-diferencial-card .card-result {
-  margin-top: 16px;
+  margin-top: auto;
   padding-top: 14px;
   border-top: 1px solid rgba(14, 165, 233, 0.1);
   font-size: 13px;
   font-weight: 700;
   color: #0ea5e9;
+}
+
+
+/* ============================================================
+   BORDER RADIUS — de píldora a sobrio/tecnológico
+   ============================================================ */
+
+/* Botón principal */
+.tf-btn {
+  border-radius: 6px !important;
+}
+
+/* Botón secundario */
+.tf-btn-2 {
+  border-radius: 6px !important;
+}
+
+/* Header inner — quitamos la píldora del nav */
+.tf-header .header-inner {
+  border-radius: 8px !important;
+}
+
+/* Badge/sub en los heros */
+.teknalis-hero .sub,
+.servicios-hero .sub,
+.blog-hero .sub {
+  border-radius: 4px !important;
+}
+
+/* Tags de servicios (list-tags) */
+.list-tags a,
+.tags-item {
+  border-radius: 4px !important;
+  padding: 6px 14px !important;
+}
+
+/* Tech tags en servicios */
+.tech-tags span {
+  border-radius: 4px !important;
+}
+
+/* Cards diferencial */
+.tek-diferencial-card {
+  border-radius: 8px !important;
+}
+
+/* Ícono dentro de la card diferencial */
+.tek-diferencial-card .card-icon {
+  border-radius: 6px !important;
+}
+
+/* Cards de proceso */
+.process-card {
+  border-radius: 8px !important;
+}
+
+/* Cards de blog */
+.blog-card {
+  border-radius: 8px !important;
+}
+
+/* Imagen de artículo en blog single */
+.blog-single-wrap .image img {
+  border-radius: 6px !important;
+}
+
+/* heading-sub (badge de sección) */
+.heading-sub {
+  border-radius: 4px !important;
+}
+
+/* CTA banner */
+.section-cta .tf-btn,
+.teknalis-cta .tf-btn {
+  border-radius: 6px !important;
+}
+
+/* Mobile menu button — dejarlo redondeado está bien en táctil */
+.btn-mobile-menu,
+.open-mb-menu {
+  border-radius: 8px !important;
+}
+
+/* Nav link sub del menu — igual */
+.sub.fw-semibold {
+  border-radius: 4px !important;
+}
+
+
+/* ============================================================
+   HEADER NUEVO — top bar + nav sticky
+   ============================================================ */
+
+/* --- Top bar --- */
+.tek-header-top {
+  background: #0f172a;
+  border-bottom: 1px solid rgba(14, 165, 233, 0.15);
+  padding: 0 24px;
+}
+
+.tek-header-top-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+}
+
+.tek-header-top-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.tek-top-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tek-top-item:hover {
+  color: #0ea5e9;
+}
+
+.tek-top-item svg {
+  flex-shrink: 0;
+  color: #0ea5e9;
+}
+
+.tek-header-top-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tek-top-social {
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tek-top-social:hover {
+  color: #0ea5e9;
+}
+
+.tek-top-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+}
+
+/* --- Nav principal --- */
+.tek-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+/* Compensar altura del header fijo (top bar 36px + nav 72px = 108px) */
+#wrapper {
+  padding-top: 108px;
+}
+
+@media (max-width: 991px) {
+  #wrapper {
+    padding-top: 108px;
+  }
+}
+
+@media (max-width: 575px) {
+  #wrapper {
+    padding-top: 100px;
+  }
+}
+
+.tek-header-main {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 2px 16px rgba(15, 23, 42, 0.07);
+  padding: 0 24px;
+  transition: box-shadow 0.3s ease;
+}
+
+.tek-header.scrolled .tek-header-main {
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.12);
+}
+
+.tek-header-main-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  gap: 32px;
+}
+
+/* Logo */
+.tek-logo {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tek-logo img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Nav links */
+.tek-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tek-nav-link {
+  display: inline-block;
+  padding: 8px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #334155;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.tek-nav-link:hover {
+  color: #0ea5e9;
+  background: rgba(14, 165, 233, 0.06);
+}
+
+.tek-nav-link.active {
+  color: #0ea5e9;
+}
+
+/* Botón CTA header */
+.tek-header-btn {
+  flex-shrink: 0;
+  font-size: 14px !important;
+  padding: 10px 20px !important;
+}
+
+/* Hamburger mobile */
+.tek-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.tek-menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #0f172a;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+/* Ocultar el antiguo header del template */
+.tf-header {
+  display: none !important;
+}
+
+/* Compensar el espacio que ocupaba el antiguo header sticky */
+body {
+  padding-top: 0 !important;
+}
+
+/* --- Responsive --- */
+@media (max-width: 991px) {
+  .tek-nav {
+    display: none;
+  }
+
+  .tek-header-btn {
+    display: none !important;
+  }
+
+  .tek-menu-toggle {
+    display: flex !important;
+  }
+
+  .tek-header-top-left {
+    gap: 14px;
+  }
+
+  .tek-top-label {
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .tek-top-item:last-child {
+    display: none;
+  }
+
+  .tek-header-top {
+    padding: 0 16px;
+  }
+
+  .tek-header-main {
+    padding: 0 16px;
+  }
+}
+
+
+/* ============================================================
+   CORRECCIONES DE BUGS — v4
+   ============================================================ */
+
+/* FIX 1: Botón "Ver casos" — mismo tamaño que el primario,
+   distinguible visualmente pero coherente */
+.teknalis-hero .tf-btn-2,
+.teknalis-hero .bot-btns .tf-btn-2 {
+  color: #ffffff !important;
+  border: 2px solid rgba(255, 255, 255, 0.45) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  padding: 14px 24px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+}
+
+.teknalis-hero .tf-btn-2:hover {
+  border-color: #0ea5e9 !important;
+  color: #0ea5e9 !important;
+  background: rgba(14, 165, 233, 0.1) !important;
+}
+
+/* FIX 2: heading-sub — solapas visibles en fondo claro */
+.heading-sub {
+  color: #0ea5e9 !important;
+  background: rgba(14, 165, 233, 0.08) !important;
+  border: 1px solid rgba(14, 165, 233, 0.2) !important;
+  box-shadow: none !important;
+}
+
+/* FIX 3: Accordion home — texto legible sobre fondo negro activo */
+.accordion-faq_item .accordion-action:not(.collapsed)~.accordion-content .text,
+.accordion-faq_item:not(:has(.collapsed)) .accordion-content .text,
+.accordion-faq_item .collapse.show .text,
+.accordion-faq_item .accordion-content .text {
+  color: #e2e8f0 !important;
+}
+
+/* Cuando el accordion está abierto, el ::before pone fondo #18181B
+   El texto de contenido debe ser claro */
+.accordion-faq_item .accordion-content {
+  position: relative;
+  z-index: 2;
+}
+
+.accordion-faq_item .accordion-content .text,
+.accordion-faq_item .accordion-content p,
+.accordion-faq_item .accordion-content .list-tags {
+  color: #cbd5e1 !important;
+}
+
+/* Tags dentro del accordion abierto */
+.section-services .accordion-faq_item .tags-item {
+  color: #0f172a !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* FIX 4: Formulario — inputs con altura y padding uniformes */
+.form-contact fieldset,
+.form-contact .fieldset {
+  margin-bottom: 0 !important;
+}
+
+.form-contact input[type="text"],
+.form-contact input[type="email"],
+.form-contact input[type="tel"],
+.form-contact input {
+  height: 52px !important;
+  padding: 0 16px !important;
+  border: 1px solid rgba(15, 23, 42, 0.15) !important;
+  border-radius: 6px !important;
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  font-size: 15px !important;
+  font-family: 'Manrope', sans-serif !important;
+  width: 100% !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.15) !important;
+}
+
+.form-contact textarea {
+  height: 120px !important;
+  padding: 14px 16px !important;
+  border: 1px solid rgba(15, 23, 42, 0.15) !important;
+  border-radius: 6px !important;
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  font-size: 15px !important;
+  font-family: 'Manrope', sans-serif !important;
+  width: 100% !important;
+  resize: vertical !important;
+  box-sizing: border-box !important;
+}
+
+.form-contact input:focus,
+.form-contact textarea:focus {
+  border-color: #0ea5e9 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12) !important;
+  background: #ffffff !important;
+}
+
+.form-contact label,
+.form-contact .fw-semibold.text-body-3 {
+  display: block !important;
+  margin-bottom: 8px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #475569 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+
+.form-contact fieldset+fieldset,
+.form-contact .mb-21+.mb-21 {
+  margin-top: 20px !important;
+}
+
+/* FIX 5: Footer — más compacto */
+.footer-inner {
+  padding: 32px 0 20px !important;
+  gap: 24px !important;
+}
+
+.footer-bottom {
+  padding: 14px 0 18px !important;
+}
+
+footer .footer-logo img {
+  height: 48px !important;
+  width: auto !important;
+}
+
+
+/* ============================================================
+   MEJORAS UXUI AUDIT — v5
+   ============================================================ */
+
+/* I3 — Hero: subtítulo más legible */
+.teknalis-hero .hero-subtitle,
+.teknalis-hero .text {
+  color: #cbd5e1 !important;
+  font-size: 17px !important;
+  line-height: 1.7 !important;
+  max-width: 680px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Hero title1 — blanco puro para dominar */
+.teknalis-hero .title1 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: none !important;
+}
+
+/* Hero title2 — gradiente azul→cyan para acompañar */
+.teknalis-hero .title2 {
+  background: linear-gradient(90deg, #0ea5e9 0%, #06b6d4 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* C4 — CTA: jerarquía clara entre primario y secundario */
+.teknalis-hero .tf-btn {
+  padding: 15px 32px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  background: #0ea5e9 !important;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.35) !important;
+}
+
+.teknalis-hero .tf-btn-2 {
+  padding: 15px 28px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.teknalis-hero .tf-btn-2:hover {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* I1 — Banner CTA inferior: eliminar gradiente de template */
+.teknalis-cta {
+  background: #0f172a !important;
+  border: 1px solid rgba(14, 165, 233, 0.18) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.teknalis-cta::before {
+  content: 'TK';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 160px;
+  font-weight: 900;
+  color: rgba(14, 165, 233, 0.04);
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: -8px;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* I4 — Proceso: grilla en desktop, slider en mobile */
+@media (min-width: 992px) {
+  .section-process .process-slide {
+    overflow: visible !important;
+  }
+
+  .section-process .swiper.tf-swiper {
+    overflow: visible !important;
+  }
+
+  .section-process .process-items {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+    transform: none !important;
+    width: 100% !important;
+    flex-wrap: wrap !important;
+  }
+
+  .section-process .process-items .swiper-slide {
+    width: 100% !important;
+    margin-right: 0 !important;
+    flex-shrink: unset !important;
+  }
+
+  .section-process .group-btn-slider {
+    display: none !important;
+  }
+}
+
+/* I2 — Blog: botones "Leer más →" con estilo propio */
+.tek-read-more {
+  color: #0ea5e9 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  transition: gap 0.2s ease !important;
+}
+
+.tek-read-more:hover {
+  gap: 8px !important;
+  color: #0284c7 !important;
+}
+
+/* M3 — Hero del blog más compacto */
+.blog-hero-compact {
+  min-height: 40vh !important;
+}
+
+.blog-hero-compact .content-wrap {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+
+/* M4 — Sombras más pronunciadas en cards */
+.process-card,
+.tek-diferencial-card,
+.featured-works-item .content,
+.blog-card {
+  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.06), 0 12px 32px rgba(15, 23, 42, 0.1) !important;
+  transition: box-shadow 0.25s ease, transform 0.25s ease !important;
+}
+
+.process-card:hover,
+.tek-diferencial-card:hover,
+.blog-card:hover {
+  box-shadow: 0 8px 12px rgba(15, 23, 42, 0.08), 0 20px 48px rgba(15, 23, 42, 0.14) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* WhatsApp en top bar — color verde característico */
+.tek-top-item svg[viewBox="0 0 24 24"][fill="currentColor"] {
+  color: #25d366;
+}
+
+/* Cards de casos — sombra más definida */
+.featured-works-item {
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08), 0 16px 40px rgba(15, 23, 42, 0.1) !important;
+}
+
+/* Heading de sección más fuerte */
+.section-featured-works .heading-title {
+  font-size: clamp(36px, 4vw, 56px) !important;
 }
