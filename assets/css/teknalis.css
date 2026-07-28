@@ -1182,10 +1182,16 @@ footer {
 
 /* ----------------------------------------------------------
    2. HERO — centrado correcto en todas las páginas
+   BUG CRÍTICO CORREGIDO: esta regla sobreescribía max-width
+   sin resetear "width", forzando el container a 1320px FIJOS
+   en cualquier pantalla (incluido mobile) → el contenido del
+   hero quedaba centrado dentro de una caja mucho más ancha
+   que la pantalla y el usuario solo veía una porción en blanco.
    ---------------------------------------------------------- */
 .teknalis-hero .container,
 .servicios-page .servicios-hero .container,
 .blog-page .blog-hero .container {
+  width: 100%;
   max-width: 1320px;
 }
 
@@ -1726,7 +1732,7 @@ footer {
 }
 
 .tek-logo img {
-  height: 62px;
+  height: 36px;
   width: auto;
   object-fit: contain;
 }
@@ -1974,7 +1980,7 @@ body {
 }
 
 footer .footer-logo img {
-  height: 62px !important;
+  height: 48px !important;
   width: auto !important;
 }
 
