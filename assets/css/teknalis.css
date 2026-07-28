@@ -259,6 +259,17 @@ textarea {
   box-shadow: 0 18px 50px rgba(15, 23, 42, 0.06);
 }
 
+/* BUG CRÍTICO CORREGIDO: el ::before oscuro del template original
+   (pensado solo para la barra del título) no tenía position:relative
+   en .accordion-action, así que se posicionaba respecto a toda la
+   tarjeta y tapaba también el texto de contenido con fondo casi
+   negro (#18181B), dejando texto oscuro sobre fondo oscuro. */
+.accordion-faq_item .accordion-action {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
 .accordion-title,
 .process-card .title,
 .benefits-box .title,
