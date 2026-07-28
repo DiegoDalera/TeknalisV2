@@ -99,7 +99,7 @@
                         <li><a href="contacto.html" class="tek-nav-link active">Contacto</a></li>
                     </ul>
                 </nav>
-                <a href="contacto.html" class="tf-btn tek-header-btn d-lg-flex d-none">Hablemos</a>
+                <a href="contacto.html" class="tf-btn tek-header-btn d-lg-flex d-none">Hablemos de tu proyecto</a>
                 <button type="button" class="tek-menu-toggle open-mb-menu d-lg-none" aria-label="Abrir menú" id="tekMenuToggle">
                     <span></span>
                     <span></span>
@@ -150,13 +150,31 @@
                         </div>
                     </div>
                     <div class="col-lg-7 offset-lg-1">
-                        <form class="form-contact effectFade fadeUp" action="https://formspree.io/f/xykozwgr" method="POST">
+                        <form id="contactForm" class="form-contact effectFade fadeUp" action="https://formspree.io/f/xykozwgr" method="POST">
                             <div class="cols mb-24">
-                                <fieldset><input type="text" name="nombre" placeholder="Nombre" required></fieldset>
-                                <fieldset><input type="email" name="email" placeholder="Email" required></fieldset>
+                                <fieldset>
+                                    <label for="nombre" class="visually-hidden">Nombre</label>
+                                    <input id="nombre" type="text" name="nombre" placeholder="Nombre" autocomplete="name" required>
+                                </fieldset>
+                                <fieldset>
+                                    <label for="email" class="visually-hidden">Email</label>
+                                    <input id="email" type="email" name="email" placeholder="Email" autocomplete="email" required>
+                                </fieldset>
                             </div>
-                            <fieldset class="mb-24"><textarea name="mensaje" rows="5" placeholder="¿Qué necesitás mejorar?" required></textarea></fieldset>
-                            <button type="submit" class="tf-btn">Hablemos</button>
+                            <fieldset class="mb-24">
+                                <label for="empresa" class="visually-hidden">Empresa o institución (opcional)</label>
+                                <input id="empresa" type="text" name="empresa" placeholder="Empresa o institución (opcional)" autocomplete="organization">
+                            </fieldset>
+                            <fieldset class="mb-24">
+                                <label for="mensaje" class="visually-hidden">¿Qué necesitás mejorar?</label>
+                                <textarea id="mensaje" name="mensaje" rows="5" placeholder="¿Qué necesitás mejorar?" required></textarea>
+                            </fieldset>
+                            <div class="tek-honeypot" aria-hidden="true">
+                                <label for="website">No completar este campo</label>
+                                <input id="website" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+                            </div>
+                            <button type="submit" class="tf-btn">Enviar mensaje</button>
+                            <p id="formStatus" class="tek-form-status" role="status" aria-live="polite"></p>
                         </form>
                     </div>
                 </div>
@@ -168,7 +186,7 @@
                 <div class="footer-inner">
                     <div class="footer-left">
                         <a href="index.html" class="footer-logo"><img src="assets-teknalis/logo-horizontal-claro.webp" alt="Teknalis"></a>
-                        <p class="text-secondary" style="margin-top:8px;font-size:13px;">Buenos Aires, Argentina<br><a href="mailto:contacto@teknalis.com.ar" style="color:rgba(255,255,255,0.45);">contacto@teknalis.com.ar</a></p>
+                        <p class="text-secondary tek-footer-meta">Buenos Aires, Argentina<br><a href="mailto:contacto@teknalis.com.ar" class="tek-footer-email">contacto@teknalis.com.ar</a></p>
                     </div>
                     <div class="footer-right">
                         <a href="index.html" class="fw-semibold link-underline link1">Inicio</a>
@@ -206,7 +224,9 @@
                 </ul>
             </div>
             <div class="canvas_foot">
-                <a href="mailto:contacto@teknalis.com.ar" class="text-caption text-neutral-200">contacto@teknalis.com.ar</a>
+                <a href="contacto.html" class="tf-btn tek-mobile-cta">Hablemos de tu proyecto</a>
+                    <br>
+                    <a href="mailto:contacto@teknalis.com.ar" class="text-caption text-neutral-200">contacto@teknalis.com.ar</a>
             </div>
                 </div>
             </div>
@@ -236,6 +256,43 @@
             header.classList.remove('scrolled');
           }
         }, { passive: true });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var form = document.getElementById('contactForm');
+        var status = document.getElementById('formStatus');
+        if (!form || !status) return;
+
+        form.addEventListener('submit', async function (event) {
+          event.preventDefault();
+          var button = form.querySelector('button[type="submit"]');
+          var originalText = button.textContent;
+          button.disabled = true;
+          button.textContent = 'Enviando…';
+          status.className = 'tek-form-status';
+          status.textContent = '';
+
+          try {
+            var response = await fetch(form.action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { 'Accept': 'application/json' }
+            });
+
+            if (!response.ok) throw new Error('No se pudo enviar el formulario');
+            form.reset();
+            status.className = 'tek-form-status is-success';
+            status.textContent = 'Gracias. Recibimos tu mensaje y te responderemos a la brevedad.';
+          } catch (error) {
+            status.className = 'tek-form-status is-error';
+            status.textContent = 'No pudimos enviar el mensaje. Escribinos a contacto@teknalis.com.ar.';
+          } finally {
+            button.disabled = false;
+            button.textContent = originalText;
+          }
+        });
       })();
     </script>
 </body>
