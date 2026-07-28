@@ -148,8 +148,8 @@ textarea {
 .teknalis-hero .content-wrap {
   max-width: 1120px;
   width: 100%;
-  overflow: hidden;
-  padding: clamp(150px, 18vh, 210px) 0 150px;
+  overflow: visible;
+  padding: clamp(100px, 12vh, 160px) 0 100px;
 }
 
 .teknalis-hero .sub {
@@ -390,6 +390,7 @@ textarea {
 footer {
   background: #0f172a;
   color: #ffffff;
+  padding-top: 0;
 }
 
 .footer-inner {
@@ -397,7 +398,7 @@ footer {
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  padding: 56px 0 28px;
+  padding: 48px 0 28px;
 }
 
 .footer-left p {
@@ -1002,7 +1003,20 @@ footer {
 
 @media (max-width: 991px) {
   .teknalis-hero {
-    min-height: 820px;
+    min-height: unset;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Blindaje: el contenido del hero nunca debe quedar invisible en mobile,
+     sea cual sea la causa (animación GSAP, timing de carga, etc.) */
+  .teknalis-hero .sub,
+  .teknalis-hero .title,
+  .teknalis-hero .text,
+  .teknalis-hero .bot-btns {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
   }
 
   .teknalis-cta,
@@ -1065,6 +1079,8 @@ footer {
   .teknalis-hero .content-wrap {
     padding-left: 14px;
     padding-right: 14px;
+    padding-top: 90px;
+    padding-bottom: 60px;
   }
 
   .teknalis-hero .sub {
