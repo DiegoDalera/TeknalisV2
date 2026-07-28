@@ -1710,7 +1710,7 @@ footer {
 }
 
 .tek-logo img {
-  height: 36px;
+  height: 62px;
   width: auto;
   object-fit: contain;
 }
@@ -1958,7 +1958,7 @@ body {
 }
 
 footer .footer-logo img {
-  height: 48px !important;
+  height: 62px !important;
   width: auto !important;
 }
 
