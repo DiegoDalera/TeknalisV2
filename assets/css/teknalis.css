@@ -683,6 +683,10 @@ footer {
   border-radius: 8px;
 }
 
+/* =========================================================
+   ARTÍCULO DESTACADO — IMAGEN VERTICAL
+   ========================================================= */
+
 .featured-post {
   display: grid;
   grid-template-columns: minmax(260px, 0.86fr) 1.14fr;
@@ -690,36 +694,90 @@ footer {
   margin-bottom: 32px;
 }
 
-.featured-post-visual,
-.blog-card-top,
-.article-hero-visual {
-  background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(14, 165, 233, 0.78)),
-    url("../../assets-teknalis/logo-isotipo.png") center / 120px no-repeat;
-  color: #ffffff;
-}
-
 .featured-post-visual {
+  position: relative;
+  min-width: 0;
+  width: 100%;
   min-height: 360px;
-  padding: 28px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 20px;
+  aspect-ratio: auto;
+  overflow: hidden;
+  padding: 0;
+  background: #071225;
 }
 
-.featured-post-visual img {
-  width: 64px;
-  opacity: 0.74;
+.featured-post-visual>img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.45s ease;
 }
 
-.featured-post-visual span,
-.blog-card-kicker {
+.featured-post-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to top,
+      rgba(2, 8, 23, 0.72) 0%,
+      rgba(2, 8, 23, 0.08) 48%,
+      transparent 100%);
+}
+
+
+@media (max-width: 991px) {
+  .featured-post {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-post-visual {
+    min-height: 320px;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 575px) {
+  .featured-post-visual {
+    min-height: 230px;
+  }
+}
+
+.featured-post-label {
+  left: 14px;
+  bottom: 14px;
+}
+
+
+.featured-post-label {
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 7px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(2, 8, 23, 0.68);
   color: #ffffff;
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-weight: 800;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.featured-post-visual:hover>img {
+  transform: scale(1.035);
 }
 
 .featured-post-content {
@@ -2166,4 +2224,198 @@ footer .footer-logo img {
 /* Heading de sección más fuerte */
 .section-featured-works .heading-title {
   font-size: clamp(36px, 4vw, 56px) !important;
+}
+
+
+/* =========================================================
+   BLOG — MINIATURAS DE ARTÍCULOS
+   ========================================================= */
+
+.featured-post-visual,
+.blog-card-top {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  background: #071225;
+}
+
+/* Imagen destacada */
+.featured-post-visual>img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  transition: transform 0.45s ease;
+}
+
+/* Miniaturas de las tarjetas */
+.blog-card-top>img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.45s ease;
+}
+
+/* Oscurecimiento leve para que las etiquetas sean legibles */
+.featured-post-visual::after,
+.blog-card-top::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top,
+      rgba(2, 8, 23, 0.72) 0%,
+      rgba(2, 8, 23, 0.12) 48%,
+      rgba(2, 8, 23, 0.02) 100%);
+}
+
+/* Etiquetas superpuestas */
+.featured-post-label,
+.blog-card-kicker {
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 7px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(2, 8, 23, 0.68);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Efecto hover */
+.featured-post-visual:hover>img,
+.blog-card-top:hover>img {
+  transform: scale(1.035);
+}
+
+/* Alturas y proporciones consistentes */
+.featured-post-visual {
+  min-height: 360px;
+  aspect-ratio: auto;
+}
+
+.blog-card-top {
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+}
+
+/* Accesibilidad: evitar movimiento cuando el usuario lo solicita */
+@media (prefers-reduced-motion: reduce) {
+
+  .featured-post-visual>img,
+  .blog-card-top>img {
+    transition: none;
+  }
+
+  .featured-post-visual:hover>img,
+  .blog-card-top:hover>img {
+    transform: none;
+  }
+}
+
+/* Ajustes móviles */
+@media (max-width: 767px) {
+  .featured-post-visual {
+    min-height: 230px;
+  }
+
+  .featured-post-label,
+  .blog-card-kicker {
+    left: 14px;
+    bottom: 14px;
+  }
+}
+
+/* =========================================================
+   ARTÍCULOS — IMAGEN DE CABECERA
+   ========================================================= */
+
+.article-hero-visual {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 0;
+  margin: 34px 0 48px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 1916 / 821;
+  background: #071225;
+}
+
+.article-hero-visual img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+}
+
+.article-hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to top,
+      rgba(2, 8, 23, 0.7) 0%,
+      rgba(2, 8, 23, 0.1) 38%,
+      transparent 68%);
+}
+
+.article-hero-category {
+  position: absolute;
+  z-index: 2;
+  left: 22px;
+  bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  background: rgba(2, 8, 23, 0.7);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (max-width: 767px) {
+  .article-hero-visual {
+    margin: 26px 0 36px;
+    border-radius: 10px;
+    aspect-ratio: 16 / 9;
+  }
+
+  .article-hero-category {
+    left: 14px;
+    bottom: 14px;
+    padding: 7px 10px;
+  }
 }
