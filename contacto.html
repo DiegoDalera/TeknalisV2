@@ -174,6 +174,14 @@
                                     <span class="fw-semibold">Remoto en toda Argentina y presencial en Buenos Aires</span>
                                 </div>
                             </div>
+
+                            <hr class="panel-divider">
+                            <span class="panel-social-label">Redes sociales</span>
+                            <div class="panel-social-list">
+                                <a href="https://www.linkedin.com/company/teknalis" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Teknalis">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-7 offset-lg-1">
@@ -182,43 +190,22 @@
                             <p class="tek-required-note">Los campos marcados con * son obligatorios.</p>
                             <div class="cols mb-24">
                                 <fieldset>
-                                    <label for="nombre" class="visually-hidden">Nombre y apellido *</label>
-                                    <input id="nombre" type="text" name="nombre" placeholder="Nombre y apellido *" autocomplete="name" required>
+                                    <label for="nombre">Nombre y apellido *</label>
+                                    <input id="nombre" type="text" name="nombre" placeholder="Ej: Juan García" autocomplete="name" required>
                                 </fieldset>
                                 <fieldset>
-                                    <label for="email" class="visually-hidden">Email *</label>
-                                    <input id="email" type="email" name="email" placeholder="Email *" autocomplete="email" required>
-                                </fieldset>
-                            </div>
-                            <div class="cols mb-24">
-                                <fieldset>
-                                    <label for="telefono" class="visually-hidden">Teléfono (opcional)</label>
-                                    <input id="telefono" type="tel" name="telefono" placeholder="Teléfono (opcional)" autocomplete="tel">
-                                </fieldset>
-                                <fieldset>
-                                    <label for="empresa" class="visually-hidden">Empresa o institución (opcional)</label>
-                                    <input id="empresa" type="text" name="empresa" placeholder="Empresa o institución (opcional)" autocomplete="organization">
+                                    <label for="email">Email *</label>
+                                    <input id="email" type="email" name="email" placeholder="su@email.com" autocomplete="email" required>
                                 </fieldset>
                             </div>
                             <fieldset class="mb-24">
-                                <label for="area" class="visually-hidden">Área de consulta</label>
-                                <select id="area" name="area" required>
-                                    <option value="" selected disabled>Área de consulta *</option>
-                                    <option value="Sitios web profesionales">Sitios web profesionales</option>
-                                    <option value="Automatizaciones">Automatizaciones</option>
-                                    <option value="Inteligencia artificial aplicada">Inteligencia artificial aplicada</option>
-                                    <option value="Integraciones y sistemas internos">Integraciones y sistemas internos</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
+                                <label for="telefono">Teléfono</label>
+                                <input id="telefono" type="tel" name="telefono" placeholder="Ej: 11 5973-8326" autocomplete="tel">
                             </fieldset>
                             <fieldset class="mb-24">
-                                <label for="mensaje" class="visually-hidden">¿Qué necesitás mejorar? *</label>
-                                <textarea id="mensaje" name="mensaje" rows="5" placeholder="¿Qué necesitás mejorar? *" required></textarea>
+                                <label for="mensaje">Descripción del proyecto o consulta *</label>
+                                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Contanos brevemente qué necesitás y el contexto general." required></textarea>
                             </fieldset>
-                            <div class="tek-honeypot" aria-hidden="true">
-                                <label for="website">No completar este campo</label>
-                                <input id="website" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-                            </div>
                             <label class="tek-consent">
                                 <input type="checkbox" name="consentimiento" required>
                                 <span>Acepto ser contactado/a por Teknalis en relación a esta consulta. *</span>
