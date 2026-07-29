@@ -74,6 +74,7 @@ textarea {
 .tf-btn-2 {
   color: #ffffff;
   border: 2px solid rgba(255, 255, 255, 0.45) !important;
+  margin: 12px;
   background: rgba(255, 255, 255, 0.08);
 }
 
