@@ -121,7 +121,7 @@ textarea {
 }
 
 .teknalis-hero {
-  min-height: 92vh;
+  min-height: 620px;
   background: #0f172a;
   position: relative;
   overflow: hidden;
@@ -149,7 +149,7 @@ textarea {
   max-width: 1120px;
   width: 100%;
   overflow: visible;
-  padding: clamp(100px, 12vh, 160px) 0 100px;
+  padding: 50px 0;
 }
 
 .teknalis-hero .sub {
@@ -438,11 +438,7 @@ footer {
 }
 
 .servicios-page .servicios-hero {
-  min-height: 760px;
-}
-
-.servicios-page .servicios-hero .content-wrap {
-  padding-bottom: 120px;
+  min-height: 560px;
 }
 
 .servicios-page .servicios-hero .title {
@@ -619,6 +615,9 @@ footer {
 .related-card {
   padding: clamp(26px, 4vw, 36px);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .related-card:hover {
@@ -656,14 +655,11 @@ footer {
 
 .related-card p {
   margin-bottom: 0;
+  margin-top: auto;
 }
 
 .blog-page .blog-hero {
-  min-height: 700px;
-}
-
-.blog-page .blog-hero .content-wrap {
-  padding-bottom: 120px;
+  min-height: 520px;
 }
 
 .section-blog-index,
@@ -1098,20 +1094,12 @@ footer {
     margin-bottom: 32px;
   }
 
-  .servicios-page .servicios-hero {
-    min-height: 780px;
-  }
-
   .sticky-service-heading {
     position: static;
   }
 
   .related-grid {
     grid-template-columns: 1fr;
-  }
-
-  .blog-page .blog-hero {
-    min-height: 760px;
   }
 
   .featured-post,
@@ -1426,7 +1414,7 @@ footer {
    ============================================================ */
 
 .teknalis-hero .scroll-more {
-  color: rgba(255, 255, 255, 0.5);
+  color: #0f172a;
   z-index: 1;
   position: relative;
 }
@@ -1436,7 +1424,7 @@ footer {
 }
 
 .teknalis-hero .scroll-more .link1 {
-  color: rgba(255, 255, 255, 0.5);
+  color: #0f172a;
 }
 
 .teknalis-hero .bot-btns {
@@ -1506,7 +1494,7 @@ footer {
 
 .servicios-hero .scroll-more,
 .blog-hero .scroll-more {
-  color: rgba(255, 255, 255, 0.5);
+  color: #0f172a;
 }
 
 .servicios-hero .tf-btn-2,
@@ -1635,6 +1623,13 @@ footer {
 /* Ícono dentro de la card diferencial */
 .tek-diferencial-card .card-icon {
   border-radius: 6px !important;
+}
+
+/* Balance vertical de la columna de texto en Proceso */
+.process-heading.h-100 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Cards de proceso */
@@ -1801,7 +1796,7 @@ footer {
 }
 
 .tek-logo img {
-  height: 36px;
+  height: 62px;
   width: auto;
   object-fit: contain;
 }
@@ -2049,7 +2044,7 @@ body {
 }
 
 footer .footer-logo img {
-  height: 48px !important;
+  height: 62px !important;
   width: auto !important;
 }
 
@@ -2418,4 +2413,93 @@ footer .footer-logo img {
     bottom: 14px;
     padding: 7px 10px;
   }
+}
+/* ============================================================
+   CONTACTO — panel de info ampliado + form con más campos
+   ============================================================ */
+
+.tek-contact-panel {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.06);
+  padding: clamp(28px, 4vw, 40px);
+  height: 100%;
+}
+
+.tek-contact-panel .panel-title {
+  color: #0f172a;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.tek-contact-panel .panel-intro {
+  color: #475569 !important;
+  margin-bottom: 28px;
+}
+
+.tek-contact-panel .contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.tek-contact-panel .contact-item .item-icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(14, 165, 233, 0.1);
+  color: #0ea5e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tek-contact-panel .contact-item .item-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.form-contact select {
+  height: 52px !important;
+  padding: 0 16px !important;
+  border: 1px solid rgba(15, 23, 42, 0.15) !important;
+  border-radius: 6px !important;
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  font-size: 15px !important;
+  font-family: 'Manrope', sans-serif !important;
+  width: 100% !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+.form-contact select:focus {
+  border-color: #0ea5e9 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12) !important;
+  background: #ffffff !important;
+}
+
+.form-contact .tek-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: #475569;
+  margin-bottom: 20px !important;
+}
+
+.form-contact .tek-consent input {
+  height: auto !important;
+  width: 16px !important;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.form-contact .tek-required-note {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 24px !important;
 }

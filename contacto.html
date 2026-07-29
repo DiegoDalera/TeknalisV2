@@ -134,45 +134,95 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-4">
-                        <div class="content-left">
-                            <div class="contact-item mb-24 effectFade fadeRotateX">
-                                <div class="text-body-3 text-secondary">Email</div>
-                                <a href="mailto:contacto@teknalis.com.ar" class="fw-semibold">contacto@teknalis.com.ar</a>
+                        <div class="tek-contact-panel content-left">
+                            <h2 class="panel-title fw-semibold">Conversemos</h2>
+                            <p class="panel-intro">Elegí el canal que prefieras, te respondemos a la brevedad.</p>
+
+                            <div class="contact-item mb-24">
+                                <span class="item-icon" aria-hidden="true">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                                </span>
+                                <div>
+                                    <div class="text-body-3 text-secondary">Email</div>
+                                    <a href="mailto:contacto@teknalis.com.ar" class="fw-semibold">contacto@teknalis.com.ar</a>
+                                </div>
                             </div>
-                            <div class="contact-item mb-24 effectFade fadeRotateX">
-                                <div class="text-body-3 text-secondary">WhatsApp</div>
-                                <a href="https://wa.me/541159738326" target="_blank" rel="noopener noreferrer" class="fw-semibold">+54 11 5973-8326</a>
+                            <div class="contact-item mb-24">
+                                <span class="item-icon" aria-hidden="true">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.121 1.535 5.849L.057 23.882l6.186-1.453A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.374l-.359-.214-3.722.873.916-3.636-.234-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+                                </span>
+                                <div>
+                                    <div class="text-body-3 text-secondary">WhatsApp</div>
+                                    <a href="https://wa.me/541159738326" target="_blank" rel="noopener noreferrer" class="fw-semibold">+54 11 5973-8326</a>
+                                </div>
                             </div>
-                            <div class="contact-item effectFade fadeRotateX">
-                                <div class="text-body-3 text-secondary">Ubicación</div>
-                                <span class="fw-semibold">Buenos Aires, Argentina</span>
+                            <div class="contact-item mb-24">
+                                <span class="item-icon" aria-hidden="true">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                </span>
+                                <div>
+                                    <div class="text-body-3 text-secondary">Ubicación</div>
+                                    <span class="fw-semibold">Buenos Aires, Argentina</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="item-icon" aria-hidden="true">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                </span>
+                                <div>
+                                    <div class="text-body-3 text-secondary">Modalidad de trabajo</div>
+                                    <span class="fw-semibold">Remoto en toda Argentina y presencial en Buenos Aires</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-7 offset-lg-1">
-                        <form id="contactForm" class="form-contact effectFade fadeUp" action="https://formspree.io/f/xykozwgr" method="POST">
+                        <form id="contactForm" class="form-contact" action="https://formspree.io/f/xykozwgr" method="POST">
+                            <h2 class="panel-title fw-semibold">Contanos sobre tu proyecto</h2>
+                            <p class="tek-required-note">Los campos marcados con * son obligatorios.</p>
                             <div class="cols mb-24">
                                 <fieldset>
-                                    <label for="nombre" class="visually-hidden">Nombre</label>
-                                    <input id="nombre" type="text" name="nombre" placeholder="Nombre" autocomplete="name" required>
+                                    <label for="nombre" class="visually-hidden">Nombre y apellido *</label>
+                                    <input id="nombre" type="text" name="nombre" placeholder="Nombre y apellido *" autocomplete="name" required>
                                 </fieldset>
                                 <fieldset>
-                                    <label for="email" class="visually-hidden">Email</label>
-                                    <input id="email" type="email" name="email" placeholder="Email" autocomplete="email" required>
+                                    <label for="email" class="visually-hidden">Email *</label>
+                                    <input id="email" type="email" name="email" placeholder="Email *" autocomplete="email" required>
+                                </fieldset>
+                            </div>
+                            <div class="cols mb-24">
+                                <fieldset>
+                                    <label for="telefono" class="visually-hidden">Teléfono (opcional)</label>
+                                    <input id="telefono" type="tel" name="telefono" placeholder="Teléfono (opcional)" autocomplete="tel">
+                                </fieldset>
+                                <fieldset>
+                                    <label for="empresa" class="visually-hidden">Empresa o institución (opcional)</label>
+                                    <input id="empresa" type="text" name="empresa" placeholder="Empresa o institución (opcional)" autocomplete="organization">
                                 </fieldset>
                             </div>
                             <fieldset class="mb-24">
-                                <label for="empresa" class="visually-hidden">Empresa o institución (opcional)</label>
-                                <input id="empresa" type="text" name="empresa" placeholder="Empresa o institución (opcional)" autocomplete="organization">
+                                <label for="area" class="visually-hidden">Área de consulta</label>
+                                <select id="area" name="area" required>
+                                    <option value="" selected disabled>Área de consulta *</option>
+                                    <option value="Sitios web profesionales">Sitios web profesionales</option>
+                                    <option value="Automatizaciones">Automatizaciones</option>
+                                    <option value="Inteligencia artificial aplicada">Inteligencia artificial aplicada</option>
+                                    <option value="Integraciones y sistemas internos">Integraciones y sistemas internos</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
                             </fieldset>
                             <fieldset class="mb-24">
-                                <label for="mensaje" class="visually-hidden">¿Qué necesitás mejorar?</label>
-                                <textarea id="mensaje" name="mensaje" rows="5" placeholder="¿Qué necesitás mejorar?" required></textarea>
+                                <label for="mensaje" class="visually-hidden">¿Qué necesitás mejorar? *</label>
+                                <textarea id="mensaje" name="mensaje" rows="5" placeholder="¿Qué necesitás mejorar? *" required></textarea>
                             </fieldset>
                             <div class="tek-honeypot" aria-hidden="true">
                                 <label for="website">No completar este campo</label>
                                 <input id="website" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
                             </div>
+                            <label class="tek-consent">
+                                <input type="checkbox" name="consentimiento" required>
+                                <span>Acepto ser contactado/a por Teknalis en relación a esta consulta. *</span>
+                            </label>
                             <button type="submit" class="tf-btn">Enviar mensaje</button>
                             <p id="formStatus" class="tek-form-status" role="status" aria-live="polite"></p>
                         </form>
