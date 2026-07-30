@@ -501,7 +501,7 @@ footer {
   overflow: hidden;
   background:
     linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(14, 165, 233, 0.76)),
-    url("../../assets-teknalis/logo-isotipo.png") center / 120px no-repeat;
+    url("../../assets-teknalis/servicio-web.webp") center / cover no-repeat;
 }
 
 .servicios-page .service-visual span {
@@ -523,19 +523,19 @@ footer {
 .servicios-page .service-visual-automation {
   background:
     linear-gradient(135deg, rgba(6, 182, 212, 0.86), rgba(15, 23, 42, 0.94)),
-    url("../../assets-teknalis/logo-isotipo.png") center / 120px no-repeat;
+    url("../../assets-teknalis/servicio-automatizaciones.webp") center / cover no-repeat;
 }
 
 .servicios-page .service-visual-consulting {
   background:
     linear-gradient(135deg, rgba(30, 41, 59, 0.94), rgba(14, 165, 233, 0.7)),
-    url("../../assets-teknalis/logo-isotipo.png") center / 120px no-repeat;
+    url("../../assets-teknalis/servicio-inteligencia-artificial.webp") center / cover no-repeat;
 }
 
 .servicios-page .service-visual-marketing {
   background:
     linear-gradient(135deg, rgba(14, 165, 233, 0.82), rgba(2, 6, 23, 0.92)),
-    url("../../assets-teknalis/logo-isotipo.png") center / 120px no-repeat;
+    url("../../assets-teknalis/servicio-integraciones.webp") center / cover no-repeat;
 }
 
 .section-deliverables,
