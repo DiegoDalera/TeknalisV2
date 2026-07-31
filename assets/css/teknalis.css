@@ -75,6 +75,7 @@ textarea {
   color: #ffffff;
   border: 2px solid rgba(255, 255, 255, 0.45) !important;
   background: rgba(255, 255, 255, 0.08);
+ 
 }
 
 .tf-btn-2:hover {
@@ -83,12 +84,18 @@ textarea {
   background: rgba(14, 165, 233, 0.1);
 }
 
+.tf-btn-3 {
+  margin-top: 11px;
+
+}
+
 .section-services .tf-btn-2,
 .section-featured-works .tf-btn-2,
 .section-benefits .tf-btn-2,
 .section-process .tf-btn-2,
 .section-contact .tf-btn-2,
 .section-cta .tf-btn-2,
+.section-blog-home .tf-btn-2,
 .blog-card .tf-btn-2,
 .featured-post .tf-btn-2 {
   color: #0f172a;
@@ -1626,12 +1633,13 @@ footer {
 }
 
 /* Balance vertical de la columna de texto en Proceso */
+/* Proceso — alinear el encabezado con la primera fila de tarjetas */
 .process-heading.h-100 {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 20px;
 }
-
 /* Cards de proceso */
 .process-card {
   border-radius: 8px !important;
@@ -1943,12 +1951,10 @@ body {
   box-shadow: none !important;
 }
 
-/* FIX 3: Accordion home — texto legible sobre fondo negro activo */
-.accordion-faq_item .accordion-action:not(.collapsed)~.accordion-content .text,
-.accordion-faq_item:not(:has(.collapsed)) .accordion-content .text,
-.accordion-faq_item .collapse.show .text,
+/* Accordion home — texto legible */
 .accordion-faq_item .accordion-content .text {
-  color: #e2e8f0 !important;
+  padding-bottom: 18px;
+  color: #475569 !important;
 }
 
 /* Cuando el accordion está abierto, el ::before pone fondo #18181B
@@ -1958,11 +1964,7 @@ body {
   z-index: 2;
 }
 
-.accordion-faq_item .accordion-content .text,
-.accordion-faq_item .accordion-content p,
-.accordion-faq_item .accordion-content .list-tags {
-  color: #cbd5e1 !important;
-}
+
 
 /* Tags dentro del accordion abierto */
 .section-services .accordion-faq_item .tags-item {
@@ -2562,3 +2564,35 @@ footer .footer-logo img {
 
 /* Enlace editorial dentro del acordeón de servicios */
 .service-blog-link{margin:18px 0 0}.service-blog-link a{color:#0284c7}
+
+/* Home - tarjetas de Proceso más compactas */
+@media (min-width: 992px) {
+  .section-process .process-card {
+    padding: 26px;
+  }
+
+  .section-process .process-card .icon {
+    margin-bottom: 55px;
+  }
+
+  .section-process .process-card .content {
+    margin-bottom: 50px;
+  }
+}
+
+/* Botón Ver blog de la home */
+.tf-btn-2.tek-blog-button {
+  color: #0f172a !important;
+  background: #ffffff !important;
+  border: 2px solid rgba(15, 23, 42, 0.2) !important;
+}
+
+.tf-btn-2.tek-blog-button:hover {
+  color: #ffffff !important;
+  background: #0f172a !important;
+  border-color: #0f172a !important;
+}
+
+.margen_11 {
+  margin-top: 11px !important;
+}
