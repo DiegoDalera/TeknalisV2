@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservar turno</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  :root{
+    --navy:#0F172A;
+    --navy-2:#16213b;
+    --panel:#1a2440;
+    --border:#2a3655;
+    --cyan:#38bdf8;
+    --cyan-dim:#0ea5c7;
+    --text:#e7ecf5;
+    --text-muted:#8b95ad;
+    --ok:#4ade80;
+    --err:#f87171;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Manrope',sans-serif;
+    background:var(--navy);
+    color:var(--text);
+    min-height:100vh;
+    padding:32px 16px 80px;
+  }
+  .wrap{max-width:520px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:28px;}
+  .brand-dot{width:10px;height:10px;border-radius:50%;background:var(--cyan);}
+  .brand-name{font-weight:700;font-size:14px;letter-spacing:0.02em;color:var(--text-muted);text-transform:uppercase;}
+
+  .negocio-header{margin-bottom:32px;}
+  .negocio-header h1{font-size:26px;font-weight:800;margin:0 0 6px;}
+  .negocio-header p{font-size:14px;color:var(--text-muted);margin:0;}
+
+  .step{margin-bottom:28px;}
+  .step-label{font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--cyan);margin:0 0 12px;}
+
+  .servicios{display:flex;flex-direction:column;gap:8px;}
+  .servicio-card{
+    background:var(--panel);border:1px solid var(--border);border-radius:10px;
+    padding:14px 16px;cursor:pointer;transition:border-color .15s;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .servicio-card:hover{border-color:var(--cyan-dim);}
+  .servicio-card.sel{border-color:var(--cyan);background:#132038;}
+  .servicio-card .nombre{font-weight:600;font-size:15px;}
+  .servicio-card .dur{font-size:13px;color:var(--text-muted);}
+
+  input[type="date"]{
+    width:100%;background:var(--panel);border:1px solid var(--border);
+    color:var(--text);border-radius:10px;padding:12px 14px;font-size:15px;font-family:inherit;
+  }
+
+  .horarios-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px;}
+  .horario-slot{
+    background:var(--panel);border:1px solid var(--border);border-radius:8px;
+    padding:10px 0;text-align:center;font-size:13px;cursor:pointer;transition:border-color .15s;
+  }
+  .horario-slot:hover{border-color:var(--cyan-dim);}
+  .horario-slot.sel{border-color:var(--cyan);background:#132038;color:var(--cyan);}
+  .horario-slot.disabled{opacity:0.3;cursor:not-allowed;}
+  .sin-horarios{font-size:13px;color:var(--text-muted);padding:8px 0;}
+
+  .campo{margin-bottom:12px;}
+  .campo label{display:block;font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+  .campo input{
+    width:100%;background:var(--panel);border:1px solid var(--border);
+    color:var(--text);border-radius:8px;padding:11px 13px;font-size:14px;font-family:inherit;
+  }
+  .campo input:focus{outline:none;border-color:var(--cyan);}
+
+  button.confirmar{
+    width:100%;background:var(--cyan);color:var(--navy);border:none;
+    padding:14px;border-radius:10px;font-weight:700;font-size:15px;
+    cursor:pointer;margin-top:8px;font-family:inherit;
+  }
+  button.confirmar:hover{background:var(--cyan-dim);}
+  button.confirmar:disabled{opacity:0.4;cursor:not-allowed;}
+
+  .msg{margin-top:16px;padding:14px;border-radius:10px;font-size:14px;}
+  .msg.ok{background:rgba(74,222,128,0.1);border:1px solid var(--ok);color:var(--ok);}
+  .msg.err{background:rgba(248,113,113,0.1);border:1px solid var(--err);color:var(--err);}
+
+  .loading, .not-found{text-align:center;color:var(--text-muted);padding:60px 20px;font-size:14px;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="brand">
+    <div class="brand-dot"></div>
+    <div class="brand-name">Teknalis — Demo</div>
+  </div>
+  <p style="font-size:12px;color:var(--text-muted);margin:-18px 0 24px;">Estudio Jurídico Fenix es un negocio de ejemplo. Probá el flujo completo de reserva.</p>
+
+  <div id="app">
+    <div class="loading">Cargando...</div>
+  </div>
+</div>
+
+<script>
+  const SUPABASE_URL = "https://matglcfrlchzlzzoiqaq.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1hdGdsY2ZybGNoemx6em9pcWFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYyNTI5OTQsImV4cCI6MjEwMTgyODk5NH0.2qrIlisSPkGbNsiACEt08NwqkjcqnQ-GTHinXAr2ODA";
+  const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const app = document.getElementById("app");
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("negocio") || "fenix";
+
+  let negocio = null;
+  let servicios = [];
+  let servicioSel = null;
+  let fechaSel = null;
+  let horarioSel = null;
+
+  init();
+
+  async function init(){
+    if(!slug){
+      app.innerHTML = `<div class="not-found">Falta indicar el negocio. Agregá <code>?negocio=slug</code> a la URL.</div>`;
+      return;
+    }
+
+    const { data: negocioData, error: negocioErr } = await client
+      .from("negocios").select("*").eq("slug", slug).single();
+
+    if(negocioErr || !negocioData){
+      app.innerHTML = `<div class="not-found">No encontramos este negocio.</div>`;
+      return;
+    }
+    negocio = negocioData;
+
+    const { data: serviciosData } = await client
+      .from("servicios").select("*").eq("negocio_id", negocio.id).eq("activo", true);
+    servicios = serviciosData || [];
+
+    render();
+  }
+
+  function render(){
+    app.innerHTML = `
+      <div class="negocio-header">
+        <h1>${negocio.nombre}</h1>
+        <p>Reservá tu turno en unos pasos</p>
+      </div>
+
+      <div class="step">
+        <p class="step-label">1. Servicio</p>
+        <div class="servicios" id="servicios-list"></div>
+      </div>
+
+      <div class="step">
+        <p class="step-label">2. Fecha</p>
+        <input type="date" id="fecha-input" min="${todayStr()}">
+        <div class="horarios-grid" id="horarios-list"></div>
+      </div>
+
+      <div class="step">
+        <p class="step-label">3. Tus datos</p>
+        <div class="campo">
+          <label>Nombre y apellido</label>
+          <input type="text" id="cliente-nombre" placeholder="Como querés que te llamemos">
+        </div>
+        <div class="campo">
+          <label>Email</label>
+          <input type="email" id="cliente-email" placeholder="nombre@correo.com">
+        </div>
+        <div class="campo">
+          <label>Teléfono (opcional)</label>
+          <input type="text" id="cliente-telefono" placeholder="11 5555 0000">
+        </div>
+        <button class="confirmar" id="btn-confirmar" disabled>Confirmar turno</button>
+        <div id="msg-area"></div>
+      </div>
+    `;
+
+    renderServicios();
+    document.getElementById("fecha-input").addEventListener("change", onFechaChange);
+    document.getElementById("btn-confirmar").addEventListener("click", confirmarTurno);
+  }
+
+  function renderServicios(){
+    const list = document.getElementById("servicios-list");
+    if(servicios.length === 0){
+      list.innerHTML = `<p class="sin-horarios">Este negocio todavía no cargó servicios.</p>`;
+      return;
+    }
+    list.innerHTML = servicios.map(s => `
+      <div class="servicio-card" data-id="${s.id}">
+        <span class="nombre">${s.nombre}</span>
+        <span class="dur">${s.duracion_minutos} min</span>
+      </div>
+    `).join("");
+
+    list.querySelectorAll(".servicio-card").forEach(el => {
+      el.addEventListener("click", () => {
+        servicioSel = servicios.find(s => s.id === el.dataset.id);
+        list.querySelectorAll(".servicio-card").forEach(c => c.classList.remove("sel"));
+        el.classList.add("sel");
+        horarioSel = null;
+        if(fechaSel) cargarHorarios();
+        checkListo();
+      });
+    });
+  }
+
+  async function onFechaChange(e){
+    fechaSel = e.target.value;
+    horarioSel = null;
+    if(servicioSel) await cargarHorarios();
+    checkListo();
+  }
+
+  async function cargarHorarios(){
+    const horariosList = document.getElementById("horarios-list");
+    horariosList.innerHTML = `<p class="sin-horarios">Buscando horarios disponibles...</p>`;
+
+    const fecha = new Date(fechaSel + "T00:00:00");
+    const diaSemana = fecha.getDay();
+
+    const { data: horariosData } = await client
+      .from("horarios").select("*").eq("negocio_id", negocio.id).eq("dia_semana", diaSemana);
+
+    if(!horariosData || horariosData.length === 0){
+      horariosList.innerHTML = `<p class="sin-horarios">No hay atención este día.</p>`;
+      return;
+    }
+
+    const { data: turnosData } = await client
+      .from("turnos").select("hora_inicio, hora_fin")
+      .eq("negocio_id", negocio.id).eq("fecha", fechaSel).eq("estado", "confirmado");
+
+    const ocupados = turnosData || [];
+    const duracion = servicioSel.duracion_minutos;
+    const slots = [];
+
+    horariosData.forEach(h => {
+      let cursor = toMinutes(h.hora_inicio);
+      const fin = toMinutes(h.hora_fin);
+      while(cursor + duracion <= fin){
+        const inicioSlot = cursor;
+        const finSlot = cursor + duracion;
+        const choca = ocupados.some(t => {
+          const oi = toMinutes(t.hora_inicio), of = toMinutes(t.hora_fin);
+          return inicioSlot < of && finSlot > oi;
+        });
+        slots.push({ inicio: toHHMM(inicioSlot), fin: toHHMM(finSlot), ocupado: choca });
+        cursor += duracion;
+      }
+    });
+
+    if(slots.length === 0){
+      horariosList.innerHTML = `<p class="sin-horarios">No hay horarios disponibles ese día.</p>`;
+      return;
+    }
+
+    horariosList.innerHTML = slots.map(s => `
+      <div class="horario-slot ${s.ocupado ? 'disabled' : ''}" data-inicio="${s.inicio}" data-fin="${s.fin}">
+        ${s.inicio}
+      </div>
+    `).join("");
+
+    horariosList.querySelectorAll(".horario-slot:not(.disabled)").forEach(el => {
+      el.addEventListener("click", () => {
+        horarioSel = { inicio: el.dataset.inicio, fin: el.dataset.fin };
+        horariosList.querySelectorAll(".horario-slot").forEach(c => c.classList.remove("sel"));
+        el.classList.add("sel");
+        checkListo();
+      });
+    });
+  }
+
+  function checkListo(){
+    const btn = document.getElementById("btn-confirmar");
+    btn.disabled = !(servicioSel && fechaSel && horarioSel);
+  }
+
+  async function confirmarTurno(){
+    const nombre = document.getElementById("cliente-nombre").value.trim();
+    const email = document.getElementById("cliente-email").value.trim();
+    const telefono = document.getElementById("cliente-telefono").value.trim();
+    const msgArea = document.getElementById("msg-area");
+
+    if(!nombre || !email){
+      msgArea.innerHTML = `<div class="msg err">Completá al menos tu nombre y email.</div>`;
+      return;
+    }
+
+    const btn = document.getElementById("btn-confirmar");
+    btn.disabled = true;
+    btn.textContent = "Confirmando...";
+
+    const { error } = await client.from("turnos").insert({
+      negocio_id: negocio.id,
+      servicio_id: servicioSel.id,
+      cliente_nombre: nombre,
+      cliente_email: email,
+      cliente_telefono: telefono || null,
+      fecha: fechaSel,
+      hora_inicio: horarioSel.inicio,
+      hora_fin: horarioSel.fin,
+      estado: "confirmado"
+    });
+
+    if(error){
+      msgArea.innerHTML = `<div class="msg err">No pudimos confirmar el turno. Probá de nuevo.</div>`;
+      btn.disabled = false;
+      btn.textContent = "Confirmar turno";
+    } else {
+      msgArea.innerHTML = `<div class="msg ok">Turno confirmado para el ${fechaSel} a las ${horarioSel.inicio}hs.</div>`;
+      btn.textContent = "Turno confirmado";
+    }
+  }
+
+  function toMinutes(t){
+    const [h, m] = t.split(":").map(Number);
+    return h * 60 + m;
+  }
+  function toHHMM(mins){
+    const h = String(Math.floor(mins / 60)).padStart(2, "0");
+    const m = String(mins % 60).padStart(2, "0");
+    return `${h}:${m}`;
+  }
+  function todayStr(){
+    return new Date().toISOString().split("T")[0];
+  }
+</script>
+
+</body>
+</html>

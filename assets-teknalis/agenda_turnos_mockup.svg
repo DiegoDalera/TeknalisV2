@@ -1,0 +1,91 @@
+<svg width="1536" height="1024" viewBox="0 0 1536 1024" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1536" height="1024" fill="#0F172A"/>
+
+  <!-- Panel izquierdo: reserva pública -->
+  <g transform="translate(120,120)">
+    <rect width="580" height="784" rx="20" fill="#141d38" stroke="#2a3655" stroke-width="1.5"/>
+    <circle cx="48" cy="52" r="7" fill="#38bdf8"/>
+    <text x="66" y="58" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1" fill="#8b95ad">TEKNALIS</text>
+
+    <text x="48" y="128" font-family="Arial, sans-serif" font-size="30" font-weight="800" fill="#e7ecf5">Estudio Jurídico Fenix</text>
+    <text x="48" y="160" font-family="Arial, sans-serif" font-size="16" fill="#8b95ad">Reservá tu turno en unos pasos</text>
+
+    <text x="48" y="220" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1" fill="#38bdf8">1. SERVICIO</text>
+    <rect x="48" y="238" width="220" height="46" rx="10" fill="#132038" stroke="#38bdf8" stroke-width="2"/>
+    <text x="68" y="267" font-family="Arial, sans-serif" font-size="15" font-weight="600" fill="#e7ecf5">Consulta inicial</text>
+    <rect x="280" y="238" width="180" height="46" rx="10" fill="#1a2440" stroke="#2a3655"/>
+    <text x="300" y="267" font-family="Arial, sans-serif" font-size="15" fill="#8b95ad">Seguimiento</text>
+
+    <text x="48" y="330" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1" fill="#38bdf8">2. FECHA Y HORARIO</text>
+    <rect x="48" y="348" width="484" height="44" rx="10" fill="#1a2440" stroke="#2a3655"/>
+    <text x="68" y="376" font-family="Arial, sans-serif" font-size="15" fill="#e7ecf5">Miércoles 12 de agosto</text>
+
+    <g font-family="Arial, sans-serif" font-size="14">
+      <rect x="48" y="410" width="108" height="42" rx="8" fill="#1a2440" stroke="#2a3655"/>
+      <text x="88" y="436" fill="#8b95ad" text-anchor="middle">9:00</text>
+      <rect x="168" y="410" width="108" height="42" rx="8" fill="#132038" stroke="#38bdf8" stroke-width="2"/>
+      <text x="208" y="436" fill="#38bdf8" text-anchor="middle" font-weight="700">10:30</text>
+      <rect x="288" y="410" width="108" height="42" rx="8" fill="#1a2440" stroke="#2a3655"/>
+      <text x="328" y="436" fill="#8b95ad" text-anchor="middle">14:00</text>
+      <rect x="408" y="410" width="124" height="42" rx="8" fill="#1a2440" stroke="#2a3655"/>
+      <text x="452" y="436" fill="#8b95ad" text-anchor="middle">16:30</text>
+    </g>
+
+    <text x="48" y="504" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1" fill="#38bdf8">3. TUS DATOS</text>
+    <rect x="48" y="522" width="484" height="40" rx="8" fill="#1a2440" stroke="#2a3655"/>
+    <text x="66" y="547" font-family="Arial, sans-serif" font-size="14" fill="#5a6584">Nombre y apellido</text>
+    <rect x="48" y="574" width="484" height="40" rx="8" fill="#1a2440" stroke="#2a3655"/>
+    <text x="66" y="599" font-family="Arial, sans-serif" font-size="14" fill="#5a6584">nombre@correo.com</text>
+
+    <rect x="48" y="648" width="484" height="52" rx="10" fill="#38bdf8"/>
+    <text x="290" y="681" font-family="Arial, sans-serif" font-size="16" font-weight="800" fill="#0F172A" text-anchor="middle">Confirmar turno</text>
+  </g>
+
+  <!-- Panel derecho: panel del negocio -->
+  <g transform="translate(760,120)">
+    <rect width="656" height="784" rx="20" fill="#141d38" stroke="#2a3655" stroke-width="1.5"/>
+    <text x="48" y="70" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1" fill="#8b95ad">PANEL DEL NEGOCIO</text>
+
+    <g font-family="Arial, sans-serif">
+      <rect x="48" y="100" width="176" height="92" rx="12" fill="#1a2440"/>
+      <text x="66" y="132" font-size="13" fill="#8b95ad">Turnos hoy</text>
+      <text x="66" y="168" font-size="30" font-weight="800" fill="#e7ecf5">7</text>
+
+      <rect x="240" y="100" width="176" height="92" rx="12" fill="#1a2440"/>
+      <text x="258" y="132" font-size="13" fill="#8b95ad">Esta semana</text>
+      <text x="258" y="168" font-size="30" font-weight="800" fill="#e7ecf5">31</text>
+
+      <rect x="432" y="100" width="176" height="92" rx="12" fill="#1a2440"/>
+      <text x="450" y="132" font-size="13" fill="#8b95ad">Ocupación</text>
+      <text x="450" y="168" font-size="30" font-weight="800" fill="#38bdf8">68%</text>
+    </g>
+
+    <line x1="48" y1="228" x2="608" y2="228" stroke="#2a3655"/>
+
+    <g font-family="Arial, sans-serif" font-size="15">
+      <text x="48" y="270" fill="#8b95ad">10:30</text>
+      <text x="120" y="270" fill="#e7ecf5" font-weight="600">Rosa Camp — Consulta inicial</text>
+      <rect x="500" y="252" width="108" height="26" rx="13" fill="#132038"/>
+      <text x="554" y="270" fill="#38bdf8" font-size="11" font-weight="700" text-anchor="middle">CONFIRMADO</text>
+
+      <text x="48" y="326" fill="#8b95ad">14:00</text>
+      <text x="120" y="326" fill="#e7ecf5" font-weight="600">Marcos Díaz — Contrato</text>
+      <rect x="500" y="308" width="108" height="26" rx="13" fill="#132038"/>
+      <text x="554" y="326" fill="#38bdf8" font-size="11" font-weight="700" text-anchor="middle">CONFIRMADO</text>
+
+      <text x="48" y="382" fill="#8b95ad">16:30</text>
+      <text x="120" y="382" fill="#e7ecf5" font-weight="600">Lucía Ferro — Seguimiento</text>
+      <rect x="500" y="364" width="108" height="26" rx="13" fill="#132038"/>
+      <text x="554" y="382" fill="#38bdf8" font-size="11" font-weight="700" text-anchor="middle">CONFIRMADO</text>
+    </g>
+
+    <line x1="48" y1="420" x2="608" y2="420" stroke="#2a3655"/>
+
+    <g font-family="Arial, sans-serif" font-size="14">
+      <rect x="48" y="446" width="120" height="36" rx="8" fill="none" stroke="#2a3655"/>
+      <text x="108" y="469" fill="#8b95ad" text-anchor="middle">Reprogramar</text>
+      <rect x="180" y="446" width="96" height="36" rx="8" fill="none" stroke="#2a3655"/>
+      <text x="228" y="469" fill="#8b95ad" text-anchor="middle">Cancelar</text>
+    </g>
+  </g>
+</svg>
