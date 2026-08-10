@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asistente IA — Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F172A; --panel:#1a2440; --border:#2a3655;
+    --cyan:#38bdf8; --text:#e7ecf5; --text-muted:#8b95ad;
+    --wa-verde-header:#075E54; --wa-fondo:#ECE5DD;
+    --wa-burbuja-in:#ffffff; --wa-burbuja-out:#DCF8C6;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Manrope',sans-serif;background:var(--navy);color:var(--text);min-height:100vh;padding:32px 16px 60px;}
+  .wrap{max-width:420px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+  .brand-dot{width:10px;height:10px;border-radius:50%;background:var(--cyan);}
+  .brand-name{font-weight:700;font-size:14px;letter-spacing:0.02em;color:var(--text-muted);text-transform:uppercase;}
+  .aviso{font-size:12px;color:var(--text-muted);margin:0 0 20px;}
+
+  .chat-box{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.35);}
+  .chat-header{background:var(--wa-verde-header);padding:12px 16px;display:flex;align-items:center;gap:10px;}
+  .chat-header .avatar{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;}
+  .chat-header .nombre{font-weight:600;font-size:14px;color:#fff;margin:0;}
+  .chat-header .estado{font-size:11px;color:rgba(255,255,255,0.75);margin:0;}
+
+  .chat-body{background:var(--wa-fondo);padding:14px;display:flex;flex-direction:column;gap:8px;min-height:420px;max-height:420px;overflow-y:auto;}
+  .msg{max-width:78%;padding:8px 11px;border-radius:8px;font-size:13.5px;line-height:1.4;color:#111;}
+  .msg.in{align-self:flex-start;background:var(--wa-burbuja-in);}
+  .msg.out{align-self:flex-end;background:var(--wa-burbuja-out);}
+  .msg.typing{align-self:flex-start;background:var(--wa-burbuja-in);color:#888;font-style:italic;}
+
+  .chat-footer{background:#fff;padding:10px 12px;display:flex;align-items:center;gap:8px;border-top:1px solid #eee;}
+  .chat-footer input{flex:1;border:none;background:#f0f0f0;border-radius:20px;padding:9px 14px;font-size:13.5px;font-family:inherit;color:#111;}
+  .chat-footer input:focus{outline:none;}
+  .chat-footer button{width:36px;height:36px;border-radius:50%;background:var(--wa-verde-header);border:none;color:#fff;font-size:16px;cursor:pointer;flex-shrink:0;}
+  .chat-footer button:disabled{opacity:0.5;cursor:not-allowed;}
+
+  .error-msg{font-size:12px;color:#f87171;margin-top:10px;text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><div class="brand-dot"></div><div class="brand-name">Teknalis — Demo</div></div>
+  <p class="aviso">Chat de ejemplo para "Veterinaria San Roque" (negocio ficticio). Probá preguntando por horarios, vacunas o turnos.</p>
+
+  <div class="chat-box">
+    <div class="chat-header">
+      <div class="avatar">🐾</div>
+      <div>
+        <p class="nombre">Veterinaria San Roque</p>
+        <p class="estado">Asistente virtual</p>
+      </div>
+    </div>
+    <div class="chat-body" id="chat-body">
+      <div class="msg in">¡Hola! Soy el asistente de Veterinaria San Roque 🐾 ¿En qué te puedo ayudar?</div>
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="input-msg" placeholder="Escribí un mensaje" autocomplete="off">
+      <button id="btn-send">➤</button>
+    </div>
+  </div>
+  <div id="error-area"></div>
+</div>
+
+<script>
+  const chatBody = document.getElementById("chat-body");
+  const input = document.getElementById("input-msg");
+  const btnSend = document.getElementById("btn-send");
+  const errorArea = document.getElementById("error-area");
+
+  let historial = [];
+
+  function agregarMensaje(texto, tipo){
+    const div = document.createElement("div");
+    div.className = "msg " + tipo;
+    div.textContent = texto;
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    return div;
+  }
+
+  async function enviarMensaje(){
+    const texto = input.value.trim();
+    if(!texto) return;
+
+    agregarMensaje(texto, "out");
+    historial.push({ role: "user", content: texto });
+    input.value = "";
+    btnSend.disabled = true;
+    errorArea.innerHTML = "";
+
+    const typingEl = agregarMensaje("escribiendo...", "typing");
+
+    try{
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: historial })
+      });
+
+      const data = await res.json();
+      typingEl.remove();
+
+      if(!res.ok){
+        errorArea.innerHTML = `<div class="error-msg">${data.error || "Algo salió mal. Probá de nuevo."}</div>`;
+        btnSend.disabled = false;
+        return;
+      }
+
+      agregarMensaje(data.reply, "in");
+      historial.push({ role: "assistant", content: data.reply });
+    } catch(err){
+      typingEl.remove();
+      errorArea.innerHTML = `<div class="error-msg">No pudimos conectar con el asistente. Probá de nuevo.</div>`;
+    }
+
+    btnSend.disabled = false;
+  }
+
+  btnSend.addEventListener("click", enviarMensaje);
+  input.addEventListener("keydown", (e) => { if(e.key === "Enter") enviarMensaje(); });
+</script>
+</body>
+</html>
