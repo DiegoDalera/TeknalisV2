@@ -2597,3 +2597,81 @@ footer .footer-logo img {
 .margen_11 {
   margin-top: 11px !important;
 }
+/* Sección compacta de productos propios (home) */
+.tek-products-mini {
+  padding-top: 8px;
+}
+
+.tek-products-mini-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin: 0 0 16px;
+}
+
+.tek-products-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.tek-products-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid var(--neutral-200);
+  border-radius: 12px;
+  padding: 12px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.tek-products-mini-card:hover {
+  border-color: var(--brand);
+  transform: translateY(-2px);
+}
+
+.tek-products-mini-card img {
+  width: 84px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  background: var(--primary);
+}
+
+.tek-products-mini-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.tek-products-mini-info h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 2px;
+}
+
+.tek-products-mini-info p {
+  font-size: 13px;
+  color: var(--secondary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tek-products-mini-card i {
+  color: var(--brand);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .tek-products-mini-grid {
+    grid-template-columns: 1fr;
+  }
+}
