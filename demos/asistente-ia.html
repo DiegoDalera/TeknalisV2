@@ -73,6 +73,15 @@
   const errorArea = document.getElementById("error-area");
 
   let historial = [];
+  const LIMITE_MENSAJES = 20;
+
+  function limpiarMarkdown(texto){
+    return texto
+      .replace(/\*\*(.*?)\*\*/g, "$1")
+      .replace(/\*(.*?)\*/g, "$1")
+      .replace(/^#+\s*/gm, "")
+      .replace(/^-\s+/gm, "• ");
+  }
 
   function agregarMensaje(texto, tipo){
     const div = document.createElement("div");
@@ -86,6 +95,13 @@
   async function enviarMensaje(){
     const texto = input.value.trim();
     if(!texto) return;
+
+    if(historial.length >= LIMITE_MENSAJES){
+      agregarMensaje("Llegamos al límite de mensajes de esta demo. Escribinos por WhatsApp real si querés seguir la charla.", "in");
+      input.disabled = true;
+      btnSend.disabled = true;
+      return;
+    }
 
     agregarMensaje(texto, "out");
     historial.push({ role: "user", content: texto });
@@ -111,7 +127,7 @@
         return;
       }
 
-      agregarMensaje(data.reply, "in");
+      agregarMensaje(limpiarMarkdown(data.reply), "in");
       historial.push({ role: "assistant", content: data.reply });
     } catch(err){
       typingEl.remove();
