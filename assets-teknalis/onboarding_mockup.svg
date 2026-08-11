@@ -1,0 +1,106 @@
+<svg width="1536" height="1024" viewBox="0 0 1536 1024" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1536" height="1024" fill="#0F172A"/>
+
+  <g transform="translate(120,100)" font-family="Arial, sans-serif">
+    <circle cx="10" cy="10" r="7" fill="#38bdf8"/>
+    <text x="28" y="16" font-size="15" font-weight="700" letter-spacing="1" fill="#8b95ad">TEKNALIS</text>
+    <text x="0" y="70" font-size="15" font-weight="700" letter-spacing="1" fill="#38bdf8">PANEL DE ONBOARDING</text>
+    <text x="0" y="102" font-size="26" font-weight="800" fill="#e7ecf5">Academia de Idiomas Vértice</text>
+  </g>
+
+  <!-- Card alumno 1: recién dado de alta -->
+  <g transform="translate(120,180)">
+    <rect width="1296" height="130" rx="14" fill="#141d38" stroke="#2a3655" stroke-width="1.5"/>
+    <circle cx="46" cy="65" r="26" fill="#132038"/>
+    <text x="46" y="72" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#38bdf8">SC</text>
+    <text x="92" y="52" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#e7ecf5">Sofía Carrizo</text>
+    <text x="92" y="74" font-family="Arial, sans-serif" font-size="13" fill="#8b95ad">Alta: hoy · Inglés Intermedio</text>
+
+    <g font-family="Arial, sans-serif" font-size="12">
+      <circle cx="500" cy="65" r="9" fill="#38bdf8"/>
+      <text x="500" y="69" text-anchor="middle" fill="#0F172A" font-weight="700">✓</text>
+      <text x="500" y="98" text-anchor="middle" fill="#38bdf8">Día 0</text>
+      <line x1="518" y1="65" x2="580" y2="65" stroke="#2a3655" stroke-width="2"/>
+
+      <circle cx="600" cy="65" r="9" fill="none" stroke="#2a3655" stroke-width="2"/>
+      <text x="600" y="98" text-anchor="middle" fill="#5a6584">Día 2</text>
+      <line x1="618" y1="65" x2="680" y2="65" stroke="#2a3655" stroke-width="2"/>
+
+      <circle cx="700" cy="65" r="9" fill="none" stroke="#2a3655" stroke-width="2"/>
+      <text x="700" y="98" text-anchor="middle" fill="#5a6584">Día 5</text>
+      <line x1="718" y1="65" x2="780" y2="65" stroke="#2a3655" stroke-width="2"/>
+
+      <circle cx="800" cy="65" r="9" fill="none" stroke="#2a3655" stroke-width="2"/>
+      <text x="800" y="98" text-anchor="middle" fill="#5a6584">Día 7</text>
+    </g>
+
+    <rect x="1080" y="42" width="150" height="26" rx="13" fill="rgba(56,189,248,0.15)"/>
+    <text x="1155" y="60" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#38bdf8" text-anchor="middle">BIENVENIDA ENVIADA</text>
+  </g>
+
+  <!-- Card alumno 2: a mitad de camino -->
+  <g transform="translate(120,330)">
+    <rect width="1296" height="130" rx="14" fill="#141d38" stroke="#2a3655" stroke-width="1.5"/>
+    <circle cx="46" cy="65" r="26" fill="#132038"/>
+    <text x="46" y="72" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#38bdf8">MP</text>
+    <text x="92" y="52" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#e7ecf5">Martín Paoli</text>
+    <text x="92" y="74" font-family="Arial, sans-serif" font-size="13" fill="#8b95ad">Alta: hace 3 días · Francés Inicial</text>
+
+    <g font-family="Arial, sans-serif" font-size="12">
+      <circle cx="500" cy="65" r="9" fill="#38bdf8"/>
+      <text x="500" y="69" text-anchor="middle" fill="#0F172A" font-weight="700">✓</text>
+      <text x="500" y="98" text-anchor="middle" fill="#38bdf8">Día 0</text>
+      <line x1="518" y1="65" x2="580" y2="65" stroke="#38bdf8" stroke-width="2"/>
+
+      <circle cx="600" cy="65" r="9" fill="#38bdf8"/>
+      <text x="600" y="69" text-anchor="middle" fill="#0F172A" font-weight="700">✓</text>
+      <text x="600" y="98" text-anchor="middle" fill="#38bdf8">Día 2</text>
+      <line x1="618" y1="65" x2="680" y2="65" stroke="#2a3655" stroke-width="2"/>
+
+      <circle cx="700" cy="65" r="9" fill="none" stroke="#2a3655" stroke-width="2"/>
+      <text x="700" y="98" text-anchor="middle" fill="#5a6584">Día 5</text>
+      <line x1="718" y1="65" x2="780" y2="65" stroke="#2a3655" stroke-width="2"/>
+
+      <circle cx="800" cy="65" r="9" fill="none" stroke="#2a3655" stroke-width="2"/>
+      <text x="800" y="98" text-anchor="middle" fill="#5a6584">Día 7</text>
+    </g>
+
+    <rect x="1080" y="42" width="150" height="26" rx="13" fill="rgba(250,204,21,0.15)"/>
+    <text x="1155" y="60" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#facc15" text-anchor="middle">RECORDATORIO HOY</text>
+  </g>
+
+  <!-- Card alumno 3: completo -->
+  <g transform="translate(120,480)">
+    <rect width="1296" height="130" rx="14" fill="#141d38" stroke="#2a3655" stroke-width="1.5"/>
+    <circle cx="46" cy="65" r="26" fill="#132038"/>
+    <text x="46" y="72" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#4ade80">RL</text>
+    <text x="92" y="52" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#e7ecf5">Rocío Leiva</text>
+    <text x="92" y="74" font-family="Arial, sans-serif" font-size="13" fill="#8b95ad">Alta: hace 8 días · Inglés Avanzado</text>
+
+    <g font-family="Arial, sans-serif" font-size="12">
+      <circle cx="500" cy="65" r="9" fill="#4ade80"/>
+      <text x="500" y="69" text-anchor="middle" fill="#0F172A" font-weight="700">✓</text>
+      <text x="500" y="98" text-anchor="middle" fill="#4ade80">Día 0</text>
+      <line x1="518" y1="65" x2="580" y2="65" stroke="#4ade80" stroke-width="2"/>
+
+      <circle cx="600" cy="65" r="9" fill="#4ade80"/>
+      <text x="600" y="69" text-anchor="middle" fill="#0F172A" font-weight="700">✓</text>
+      <text x="600" y="98" text-anchor="middle" fill="#4ade80">Día 2</text>
+      <line x1="618" y1="65" x2="680" y2="65" stroke="#4ade80" stroke-width="2"/>
+
+      <circle cx="700" cy="65" r="9" fill="#4ade80"/>
+      <text x="700" y="69" text-anchor="middle" fill="#0F172A" font-weight="700">✓</text>
+      <text x="700" y="98" text-anchor="middle" fill="#4ade80">Día 5</text>
+      <line x1="718" y1="65" x2="780" y2="65" stroke="#4ade80" stroke-width="2"/>
+
+      <circle cx="800" cy="65" r="9" fill="#4ade80"/>
+      <text x="800" y="69" text-anchor="middle" fill="#0F172A" font-weight="700">✓</text>
+      <text x="800" y="98" text-anchor="middle" fill="#4ade80">Día 7</text>
+    </g>
+
+    <rect x="1080" y="42" width="150" height="26" rx="13" fill="rgba(74,222,128,0.15)"/>
+    <text x="1155" y="60" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#4ade80" text-anchor="middle">ONBOARDING COMPLETO</text>
+  </g>
+
+  <text x="120" y="700" font-family="Arial, sans-serif" font-size="13" fill="#5a6584">Cada paso dispara un email automático. El equipo ve de un vistazo quién necesita atención manual.</text>
+</svg>
