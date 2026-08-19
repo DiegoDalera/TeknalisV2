@@ -2,6 +2,15 @@
 <html lang="es">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18367533007"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18367533007');
+    </script>
+
     <meta charset="utf-8">
     <title>Contacto | Teknalis</title>
     <meta name="author" content="Teknalis">
@@ -326,6 +335,13 @@
             form.reset();
             status.className = 'tek-form-status is-success';
             status.textContent = 'Gracias. Recibimos tu mensaje y te responderemos a la brevedad.';
+
+            // Google Ads: registra la conversión solo tras un envío exitoso confirmado por Formspree.
+            if (typeof gtag === 'function') {
+              gtag('event', 'conversion', {
+                'send_to': 'AW-18367533007/NYbOCI3DqeQcEM-fqbZE'
+              });
+            }
           } catch (error) {
             status.className = 'tek-form-status is-error';
             status.textContent = 'No pudimos enviar el mensaje. Escribinos a contacto@teknalis.com.ar.';
