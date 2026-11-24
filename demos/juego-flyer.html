@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18367533007"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18367533007');
+    </script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teknalis Flyer | Minijuego para sitios web</title>
+<meta name="description" content="Probá Teknalis Flyer, un minijuego para sitios web que atrae visitantes, muestra tus servicios y captura contactos. Producto propio de Teknalis.">
+<link rel="icon" href="../assets-teknalis/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0F172A; --panel:#1a2440; --fg:#e7ecf5; --muted:#8b95ad;
+    --accent:#38bdf8; --accent-ink:#0F172A; --warn:#f87171; --gold:#fbbf24;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--bg); color:var(--fg);
+    font-family:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    min-height:100vh; padding:14px 10px 40px;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .wrap{width:100%; max-width:min(460px, calc((100vh - 150px) * 0.7)); margin:0 auto}
+  .hud{display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:0 4px 8px; font-variant-numeric:tabular-nums}
+  .brand{font-weight:700; letter-spacing:.02em}
+  .brand span{color:var(--accent)}
+  .stats{display:flex; gap:14px; color:var(--muted); font-size:13px}
+  .stats b{color:var(--fg); font-size:16px}
+  .stage{position:relative; border-radius:14px; overflow:hidden; background:var(--panel); border:1px solid #2a3655}
+  canvas{display:block; width:100%; height:auto; touch-action:manipulation; user-select:none; -webkit-user-select:none}
+  .overlay{
+    position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:18px; gap:10px; pointer-events:none;
+    background:rgba(15,23,42,.8); backdrop-filter:blur(2px);
+  }
+  .overlay[hidden]{display:none}
+  .overlay h1{margin:0; font-size:clamp(20px,6vw,30px); line-height:1.15}
+  .overlay p{margin:0; color:var(--muted); font-size:clamp(13px,3.4vw,15px); max-width:34ch}
+  .overlay .big{font-size:clamp(34px,10vw,56px); font-weight:800; color:var(--accent)}
+  .row{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:4px}
+  .btn{
+    pointer-events:auto; cursor:pointer; border:0; border-radius:999px; padding:12px 20px;
+    font-weight:700; font-size:15px; line-height:1; font-family:inherit; text-decoration:none; display:inline-block;
+    background:var(--accent); color:var(--accent-ink);
+  }
+  .btn.ghost{background:transparent; color:var(--fg); border:1px solid #2a3655}
+  .btn:focus-visible{outline:3px solid var(--gold); outline-offset:2px}
+  .badge{background:#2a2108; color:var(--gold); border:1px solid #5c4710; border-radius:999px; padding:6px 12px; font-size:13px}
+  .mute{background:transparent; border:1px solid #2a3655; color:var(--fg); border-radius:999px; width:30px; height:30px; cursor:pointer; font-size:14px; line-height:1; padding:0; align-self:center}
+  .mute:focus-visible{outline:3px solid var(--gold); outline-offset:2px}
+  .lead{pointer-events:auto; width:100%; max-width:330px; display:flex; flex-direction:column; gap:6px}
+  .lead[hidden]{display:none}
+  .lead form{display:flex; gap:8px}
+  .lead form[hidden]{display:none}
+  .lead input[type=email]{flex:1; min-width:0; border-radius:999px; border:1px solid #2a3655; background:#0F172A; color:var(--fg); padding:11px 14px; font-family:inherit; font-size:16px}
+  .lead input[type=email]::placeholder{color:#5d7394}
+  .lead input:focus-visible{outline:3px solid var(--gold); outline-offset:2px}
+  .lead .btn{padding:11px 16px; white-space:nowrap}
+  .lead .btn[disabled]{opacity:.6; cursor:default}
+  .lead small{color:var(--muted); font-size:11.5px; line-height:1.35}
+  .lead .msg{font-size:13px; min-height:1.2em; color:var(--fg)}
+  .lead .msg.ok{color:var(--accent)}
+  .lead .msg.err{color:var(--warn)}
+  .hp{position:absolute; left:-9999px; width:1px; height:1px; opacity:0}
+  .topbar{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:0 4px 12px; font-size:13px}
+  .topbar a{color:var(--muted); text-decoration:none}
+  .topbar a:hover{color:var(--fg)}
+  .topbar .site{font-weight:700; color:var(--fg); display:flex; align-items:center; gap:8px}
+  .topbar .dot{width:9px; height:9px; border-radius:50%; background:var(--accent); display:inline-block}
+  .lead small a{color:var(--accent); text-decoration:underline}
+  .about{margin-top:22px; padding:16px; border:1px solid #2a3655; border-radius:14px; background:#16213b; text-align:center}
+  .about p{margin:0 0 12px; color:var(--muted); font-size:14px; line-height:1.5}
+  .about p b{color:var(--fg)}
+  .about .btn{pointer-events:auto}
+  .hint{padding:8px 4px 0; color:var(--muted); font-size:12px; text-align:center}
+  @media (prefers-reduced-motion:reduce){ .overlay{backdrop-filter:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a href="../index.html" class="site"><span class="dot"></span>Teknalis</a>
+    <a href="../index.html">← Volver al sitio</a>
+  </div>
+  <div class="hud">
+    <div class="brand">Fl<span>yer</span></div>
+    <div class="stats">
+      <div>Puntos <b id="hudScore">0</b></div>
+      <div>Servicios <b id="hudTokens">0</b></div>
+      <div>Récord <b id="hudBest">0</b></div>
+      <button class="mute" id="btnMute" type="button" aria-label="Silenciar sonido" title="Sonido">🔊</button>
+    </div>
+  </div>
+
+  <div class="stage" id="stage">
+    <canvas id="game" width="420" height="600" aria-label="Juego: volá entre los obstáculos sin caerte"></canvas>
+
+    <div class="overlay" id="ovStart">
+      <h1>Volá entre los firewalls.<br>No te caigas.</h1>
+      <p>Tocá la pantalla o apretá <b>espacio</b> para impulsarte. Juntá servicios y descubrí proyectos reales.</p>
+      <div class="row"><button class="btn" id="btnPlay">Jugar</button></div>
+    </div>
+
+    <div class="overlay" id="ovOver" hidden>
+      <h1 id="overTitle">¡Te estrellaste!</h1>
+      <div class="big" id="overScore">0</div>
+      <p id="overMeta"></p>
+      <div class="badge" id="overUnlock" hidden></div>
+      <div class="lead" id="leadBox" hidden>
+        <form id="leadForm" novalidate>
+          <input type="email" id="leadEmail" inputmode="email" autocomplete="email" placeholder="tu@email.com" aria-label="Tu email" required>
+          <input type="text" id="leadHp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn" id="leadSend" type="submit">Canjear</button>
+        </form>
+        <div class="msg" id="leadMsg" role="status" aria-live="polite"></div>
+        <small><span id="leadNote"></span> <a href="../privacidad.html" target="_blank" rel="noopener">Política de privacidad</a></small>
+      </div>
+      <div class="row">
+        <button class="btn" id="btnAgain">Jugar de nuevo</button>
+        <a class="btn ghost" id="btnWa" href="#" target="_blank" rel="noopener">Hablemos por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+  <div class="hint">Espacio / ↑ / toque para volar</div>
+
+  <div class="about">
+    <p><b>Teknalis Flyer</b> es un producto propio de Teknalis: un minijuego para tu sitio que atrae visitantes, muestra tus servicios y te acerca contactos.</p>
+    <a class="btn" href="../contacto.html">Quiero uno para mi negocio</a>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   CONFIGURACIÓN: lo único que tenés que editar
+   ========================================================= */
+const CONFIG = {
+  brand: "Teknalis",
+  whatsapp: "541159738326",            // mismo número del sitio
+  unlockScore: 150,                    // puntaje para "desbloquear" el premio
+  unlockText: "🎁 Desbloqueaste un diagnóstico inicial sin cargo",
+  // Los emails se envían a este formulario de Formspree (el mismo del contacto del sitio).
+  leadEndpoint: "https://formspree.io/f/xykozwgr",
+  leadPrompt: "Dejanos tu email y te escribimos para coordinar el diagnóstico.",
+  leadNote: "Usamos tu email solo para coordinar el diagnóstico y responder tu consulta.",
+  milestoneEvery: 100,                 // cada cuántos puntos aparece un proyecto
+  // Proyectos reales, con los resultados que ya publicás en casos.html
+  cases: [
+    { title: "INAES",                  detail: "Automatización · 1 semana → menos de 1 minuto" },
+    { title: "IFTS 16",                detail: "Sistema interno · sin certificados manuales" },
+    { title: "De Filippo Propiedades", detail: "Portal web · búsqueda integrada" },
+    { title: "Agenda de Turnos",       detail: "Producto propio · reservas online y panel" },
+    { title: "Asistente con IA",       detail: "Producto propio · responde FAQs las 24 hs" }
+  ],
+  services: ["WEB", "SEO", "ADS", "APP"]
+};
+
+/* =========================================================
+   JUEGO
+   ========================================================= */
+(() => {
+  const W = 420, H = 600, GROUND = 548;
+  const GRAVITY = 1500, FLAP = -430;
+  const GAP = 170, GATE_W = 62, SPACING = 235;
+  const GATE_PTS = 10, TOKEN_PTS = 25;
+  const CD_STEP = 0.8;        // segundos por número de la cuenta regresiva (3-2-1)
+
+  const cvs = document.getElementById('game');
+  const ctx = cvs.getContext('2d');
+  const $ = id => document.getElementById(id);
+  const hudScore = $('hudScore'), hudTokens = $('hudTokens'), hudBest = $('hudBest');
+  const ovStart = $('ovStart'), ovOver = $('ovOver');
+
+  function fit(){
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cvs.width = W * dpr; cvs.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  fit(); window.addEventListener('resize', fit);
+
+  let best = 0;
+  try { best = parseInt(localStorage.getItem('tk_flyer_best') || '0', 10) || 0; } catch(e){}
+  hudBest.textContent = best;
+
+  function emit(event, data){
+    const payload = Object.assign({ event: 'tk_flyer_' + event }, data || {});
+    try { (window.dataLayer = window.dataLayer || []).push(payload); } catch(e){}
+    try { if (typeof window.gtag === 'function') window.gtag('event', 'tk_flyer_' + event, data || {}); } catch(e){}
+    try { if (window.parent !== window) window.parent.postMessage({ type: 'teknalis-flyer', ...payload }, '*'); } catch(e){}
+  }
+
+  /* Sonidos sintetizados con WebAudio: no hay archivos que cargar */
+  const Sfx = (() => {
+    let ac = null, muted = false;
+    try { muted = localStorage.getItem('tk_flyer_muted') === '1'; } catch(e){}
+    function ensure(){
+      if (ac){ if (ac.state === 'suspended'){ try { ac.resume().catch(() => {}); } catch(e){} } return ac; }
+      try { const C = window.AudioContext || window.webkitAudioContext; if (!C) return null; ac = new C(); } catch(e){ return null; }
+      return ac;
+    }
+    function tone(freq, dur, type, vol, slideTo, delay){
+      if (muted) return;
+      const a = ensure(); if (!a) return;
+      try {
+        const t = a.currentTime + (delay || 0);
+        const o = a.createOscillator(), g = a.createGain();
+        o.type = type || 'sine';
+        o.frequency.setValueAtTime(freq, t);
+        if (slideTo) o.frequency.exponentialRampToValueAtTime(slideTo, t + dur);
+        g.gain.setValueAtTime(vol || 0.05, t);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        o.connect(g); g.connect(a.destination);
+        o.start(t); o.stop(t + dur + 0.03);
+      } catch(e){}
+    }
+    return {
+      unlock: ensure,
+      flap(){ tone(380, .09, 'square', .035, 640); },
+      point(){ tone(700, .06, 'sine', .05); },
+      coin(){ tone(880, .08, 'triangle', .07); tone(1320, .14, 'triangle', .07, null, .07); },
+      hit(){ tone(200, .4, 'sawtooth', .08, 45); },
+      tick(){ tone(520, .1, 'sine', .06); },
+      go(){ tone(800, .25, 'sine', .08); },
+      milestone(){ [523, 659, 784].forEach((f, i) => tone(f, .16, 'triangle', .06, null, i * .09)); },
+      toggle(){
+        muted = !muted;
+        try { localStorage.setItem('tk_flyer_muted', muted ? '1' : '0'); } catch(e){}
+        if (!muted){ ensure(); tone(660, .08, 'sine', .05); }
+        return muted;
+      },
+      isMuted: () => muted
+    };
+  })();
+
+  const reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let state = 'ready';        // ready | countdown | running | over
+  let lockUntil = 0, cdLeft = 0, lastCd = 0;
+  let formOpen = false;       // el formulario de email está visible: tocar la pantalla no reinicia
+  let leadDone = false;       // ya dejó el email en esta visita
+  let leadCtx = { score: 0, services: 0 };
+  let player, gates, speed, gatesPassed, tokenCount, score;
+  let lastCenter, lastMilestone, banner, bgOffset, shake, time, idleT, particles;
+
+  const LABELS = ['404', 'BUG', 'LENTO', 'ERROR'];
+
+  function reset(){
+    player = { x: 110, y: 270, w: 34, h: 34, vy: 0, rot: 0 };
+    gates = []; particles = [];
+    speed = 150; gatesPassed = 0; tokenCount = 0; score = 0;
+    lastCenter = 280; lastMilestone = 0; banner = null; bgOffset = 0; shake = 0; time = 0; idleT = 0;
+    hudScore.textContent = 0; hudTokens.textContent = 0;
+    addGate(W + 150);
+  }
+
+  function addGate(x){
+    // el hueco no salta demasiado de un portón al siguiente (justo para el jugador)
+    const min = 130, max = GROUND - 130;
+    let c = lastCenter + (Math.random() * 2 - 1) * 150;
+    c = Math.max(min, Math.min(max, c));
+    lastCenter = c;
+    const g = { x, center: c, label: LABELS[Math.floor(Math.random() * LABELS.length)], scored: false, token: null };
+    if (Math.random() < 0.6){
+      g.token = { label: CONFIG.services[Math.floor(Math.random() * CONFIG.services.length)], taken: false, pop: 0 };
+    }
+    gates.push(g);
+  }
+
+  function start(){
+    Sfx.unlock();
+    try { if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); } catch(e){}
+    formOpen = false;
+    reset(); state = 'countdown'; cdLeft = 3 * CD_STEP; lastCd = 0;
+    ovStart.hidden = true; ovOver.hidden = true;
+    emit('countdown');
+  }
+
+  // Cuenta regresiva: el logo flota en el lugar y no cae hasta que termina
+  function updateCountdown(dt){
+    cdLeft -= dt;
+    player.y = 270 + Math.sin(idleT * 4) * 8;
+    player.vy = 0; player.rot = 0;
+    const n = Math.ceil(cdLeft / CD_STEP);
+    if (n !== lastCd && n > 0){ lastCd = n; Sfx.tick(); }
+    if (cdLeft <= 0){
+      Sfx.go();
+      state = 'running'; player.vy = FLAP;
+      emit('start');
+    }
+  }
+
+  function flap(){
+    const now = performance.now();
+    Sfx.unlock();
+    if (state === 'countdown') return;
+    if (state === 'over' && formOpen) return;
+    if (state !== 'running'){ if (now > lockUntil) start(); return; }
+    player.vy = FLAP; Sfx.flap();
+    if (!reduceMotion) for (let i = 0; i < 3; i++) particles.push({ x: player.x + 4, y: player.y + player.h - 4, vx: -60 - Math.random() * 40, vy: 40 + Math.random() * 60, life: .35 });
+  }
+
+  function gameOver(){
+    state = 'over'; lockUntil = performance.now() + 700; shake = reduceMotion ? 0 : 10;
+    Sfx.hit();
+    const finalScore = score;
+    const isRecord = finalScore > best;
+    if (isRecord){
+      best = finalScore;
+      try { localStorage.setItem('tk_flyer_best', String(best)); } catch(e){}
+    }
+    hudBest.textContent = best;
+    $('overTitle').textContent = isRecord && finalScore > 0 ? '¡Nuevo récord!' : '¡Te estrellaste!';
+    $('overScore').textContent = finalScore;
+    $('overMeta').textContent = `Pasaste ${gatesPassed} obstáculo${gatesPassed === 1 ? '' : 's'} · ${tokenCount} servicio${tokenCount === 1 ? '' : 's'} · Récord: ${best}`;
+    const unlocked = finalScore >= CONFIG.unlockScore;
+    const badge = $('overUnlock');
+    badge.hidden = !unlocked; badge.textContent = CONFIG.unlockText;
+    leadCtx = { score: finalScore, services: tokenCount };
+    formOpen = unlocked && !leadDone && !!CONFIG.leadEndpoint;
+    $('leadBox').hidden = !formOpen;
+    if (formOpen){
+      $('leadForm').hidden = false; $('leadSend').disabled = false;
+      setMsg(CONFIG.leadPrompt, '');
+    } else if (unlocked && leadDone){
+      badge.textContent = CONFIG.unlockText + ' · ya registramos tu email';
+    }
+    const msg = unlocked
+      ? `Hola ${CONFIG.brand}! Hice ${finalScore} puntos en el juego y quiero canjear el diagnóstico inicial sin cargo.`
+      : `Hola ${CONFIG.brand}! Jugué al juego (${finalScore} puntos) y quiero consultar por un proyecto.`;
+    $('btnWa').href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+    ovOver.hidden = false;
+    emit('game_over', { score: finalScore, gates: gatesPassed, services: tokenCount, unlocked });
+  }
+
+  const overlapRect = (a, b, inset) =>
+    a.x + inset < b.x + b.w && a.x + a.w - inset > b.x &&
+    a.y + inset < b.y + b.h && a.y + a.h - inset > b.y;
+
+  function update(dt){
+    time += dt;
+    speed = Math.min(150 + time * 2.5, 230);
+    const dx = speed * dt;
+    bgOffset = (bgOffset + dx * 0.4) % 40;
+
+    // Física
+    player.vy += GRAVITY * dt;
+    player.y += player.vy * dt;
+    player.rot = Math.max(-0.45, Math.min(1.1, player.vy / 600));
+
+    if (player.y < -10 || player.y + player.h > GROUND){ player.y = Math.min(player.y, GROUND - player.h); gameOver(); return; }
+
+    // Portones
+    for (const g of gates){
+      g.x -= dx;
+      const top = { x: g.x, y: -20, w: GATE_W, h: g.center - GAP / 2 + 20 };
+      const bot = { x: g.x, y: g.center + GAP / 2, w: GATE_W, h: GROUND - (g.center + GAP / 2) };
+      if (overlapRect(player, top, 5) || overlapRect(player, bot, 5)){ gameOver(); return; }
+
+      if (g.token && !g.token.taken){
+        const tx = g.x + GATE_W / 2, ty = g.center;
+        const box = { x: tx - 17, y: ty - 17, w: 34, h: 34 };
+        if (overlapRect(player, box, 0)){ g.token.taken = true; g.token.pop = .35; tokenCount++; score += TOKEN_PTS; Sfx.coin(); }
+      } else if (g.token && g.token.pop > 0){ g.token.pop -= dt; }
+
+      if (!g.scored && g.x + GATE_W < player.x){ g.scored = true; gatesPassed++; score += GATE_PTS; Sfx.point(); }
+    }
+    gates = gates.filter(g => g.x + GATE_W > -20);
+    const lastG = gates[gates.length - 1];
+    if (!lastG || lastG.x <= W - SPACING + 20) addGate((lastG ? lastG.x : W) + SPACING);
+
+    hudScore.textContent = score; hudTokens.textContent = tokenCount;
+
+    for (const p of particles){ p.x += p.vx * dt; p.y += p.vy * dt; p.life -= dt; }
+    particles = particles.filter(p => p.life > 0);
+
+    const step = Math.floor(score / CONFIG.milestoneEvery);
+    if (step > lastMilestone){
+      lastMilestone = step;
+      const c = CONFIG.cases[(step - 1) % CONFIG.cases.length];
+      banner = { title: c.title, detail: c.detail, ttl: 3.2 };
+      Sfx.milestone();
+      emit('milestone', { score, case: c.title });
+    }
+    if (banner){ banner.ttl -= dt; if (banner.ttl <= 0) banner = null; }
+    if (shake > 0) shake = Math.max(0, shake - 40 * dt);
+  }
+
+  /* ----------------- dibujo ----------------- */
+  function rr(x, y, w, h, r){
+    r = Math.max(0, Math.min(r, w / 2, h / 2));
+    ctx.beginPath();
+    ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+
+  function drawColumn(x, y, h, capAtBottom, label){
+    if (h <= 0) return;
+    const body = ctx.createLinearGradient(x, 0, x + GATE_W, 0);
+    body.addColorStop(0, '#d4584f'); body.addColorStop(1, '#f87171');
+    ctx.fillStyle = body; ctx.fillRect(x + 6, y, GATE_W - 12, h);
+    // franjas tipo rack
+    ctx.fillStyle = 'rgba(0,0,0,.18)';
+    for (let yy = y + 10; yy < y + h; yy += 22) ctx.fillRect(x + 12, yy, GATE_W - 24, 3);
+    // tapa
+    const capH = 28, capY = capAtBottom ? y + h - capH : y;
+    ctx.fillStyle = '#fb7185'; rr(x, capY, GATE_W, capH, 6); ctx.fill();
+    ctx.fillStyle = '#2a0a0a'; ctx.font = '800 11px Manrope, system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(label, x + GATE_W / 2, capY + capH / 2 + 1);
+  }
+
+  function draw(){
+    ctx.save();
+    if (shake > 0) ctx.translate((Math.random() - .5) * shake, (Math.random() - .5) * shake);
+
+    const g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, '#16213b'); g.addColorStop(1, '#0F172A');
+    ctx.fillStyle = g; ctx.fillRect(-10, -10, W + 20, H + 20);
+
+    // grilla
+    ctx.strokeStyle = 'rgba(56,189,248,.07)'; ctx.lineWidth = 1;
+    for (let x = -bgOffset; x < W; x += 40){ ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, GROUND); ctx.stroke(); }
+    for (let y = 20; y < GROUND; y += 40){ ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+    // portones
+    if (gates) for (const gt of gates){
+      const topH = gt.center - GAP / 2;
+      drawColumn(gt.x, -2, topH + 2, true, gt.label);
+      drawColumn(gt.x, gt.center + GAP / 2, GROUND - (gt.center + GAP / 2), false, gt.label);
+      if (gt.token && (!gt.token.taken || gt.token.pop > 0)){
+        const k = gt.token, tx = gt.x + GATE_W / 2, ty = gt.center;
+        const scale = k.taken ? 1 + (0.35 - k.pop) * 2 : 1;
+        ctx.globalAlpha = k.taken ? Math.max(0, k.pop / 0.35) : 1;
+        ctx.beginPath(); ctx.arc(tx, ty, 16 * scale, 0, Math.PI * 2);
+        ctx.fillStyle = '#fbbf24'; ctx.fill();
+        ctx.fillStyle = '#3b2a00'; ctx.font = '700 11px Manrope, system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(k.label, tx, ty + 1);
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    // suelo
+    ctx.fillStyle = '#1a2440'; ctx.fillRect(0, GROUND, W, H - GROUND);
+    ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(0, GROUND); ctx.lineTo(W, GROUND); ctx.stroke();
+    ctx.fillStyle = 'rgba(138,160,189,.35)';
+    for (let x = -(bgOffset * 2.5) % 60; x < W; x += 60) ctx.fillRect(x, GROUND + 16, 22, 3);
+
+    // estela
+    if (particles) for (const p of particles){
+      ctx.globalAlpha = Math.max(0, p.life / .35) * .6;
+      ctx.fillStyle = '#38bdf8'; ctx.fillRect(p.x, p.y, 5, 5);
+    }
+    ctx.globalAlpha = 1;
+
+    // jugador (con inclinación)
+    if (player){
+      const p = player;
+      const bob = state === 'ready' ? Math.sin(idleT * 4) * 8 : 0;
+      ctx.save();
+      ctx.translate(p.x + p.w / 2, p.y + p.h / 2 + bob); ctx.rotate(p.rot);
+      ctx.fillStyle = '#38bdf8'; rr(-p.w / 2, -p.h / 2, p.w, p.h, 9); ctx.fill();
+      ctx.fillStyle = '#0F172A'; ctx.font = '800 20px Manrope, system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('T', 0, 1);
+      ctx.fillStyle = '#fff'; ctx.fillRect(p.w / 2 - 12, -p.h / 2 + 6, 6, 6);
+      ctx.fillStyle = '#0F172A'; ctx.fillRect(p.w / 2 - 9, -p.h / 2 + 8, 3, 3);
+      // alita
+      const flapUp = p.vy < 0;
+      ctx.fillStyle = '#0ea5c7';
+      ctx.beginPath(); ctx.moveTo(-10, 0); ctx.lineTo(-24, flapUp ? -14 : 10); ctx.lineTo(-4, 6); ctx.closePath(); ctx.fill();
+      ctx.restore();
+    }
+
+    // cartel de proyecto
+    if (banner){
+      const a = Math.min(1, banner.ttl, (3.2 - banner.ttl) * 4);
+      ctx.globalAlpha = Math.max(0, a);
+      const bw = 340, bh = 62, bx = (W - bw) / 2, by = 22;
+      ctx.fillStyle = 'rgba(26,36,64,.96)'; rr(bx, by, bw, bh, 12); ctx.fill();
+      ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.5; rr(bx, by, bw, bh, 12); ctx.stroke();
+      ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+      ctx.fillStyle = '#38bdf8'; ctx.font = '700 11px Manrope, system-ui, sans-serif';
+      ctx.fillText('PROYECTO REAL', bx + 16, by + 20);
+      ctx.fillStyle = '#e7ecf5'; ctx.font = '700 17px Manrope, system-ui, sans-serif';
+      ctx.fillText(banner.title, bx + 16, by + 40);
+      ctx.fillStyle = '#8b95ad'; ctx.font = '400 12px Manrope, system-ui, sans-serif';
+      ctx.fillText(banner.detail, bx + 16, by + 55);
+      ctx.globalAlpha = 1;
+    }
+
+    // cuenta regresiva
+    if (state === 'countdown'){
+      const n = Math.max(1, Math.ceil(cdLeft / CD_STEP));
+      const frac = Math.min(1, Math.max(0, cdLeft / CD_STEP - (n - 1)));   // 1 → 0 dentro de cada número
+      ctx.save();
+      ctx.translate(W / 2, 200); ctx.scale(0.8 + 0.4 * frac, 0.8 + 0.4 * frac);
+      ctx.globalAlpha = 0.35 + 0.65 * frac;
+      ctx.fillStyle = '#e7ecf5'; ctx.font = '800 110px Manrope, system-ui, sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(String(n), 0, 0);
+      ctx.restore();
+      ctx.fillStyle = '#8b95ad'; ctx.font = '600 14px Manrope, system-ui, sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+      ctx.fillText('Preparate…', W / 2, 290 + 70);
+    }
+
+    // puntaje grande
+    if (state === 'running'){
+      ctx.fillStyle = 'rgba(230,237,247,.9)'; ctx.font = '800 40px Manrope, system-ui, sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+      if (!banner) ctx.fillText(String(score), W / 2, 70);
+    }
+    ctx.restore();
+  }
+
+  /* ----------------- bucle ----------------- */
+  let last = performance.now();
+  function frame(now){
+    const dt = Math.min((now - last) / 1000, 0.05); last = now;
+    idleT += dt;
+    if (state === 'countdown') updateCountdown(dt);
+    else if (state === 'running') update(dt);
+    draw();
+    requestAnimationFrame(frame);
+  }
+  reset();
+  requestAnimationFrame(frame);
+
+  /* ----------------- controles ----------------- */
+  window.addEventListener('keydown', e => {
+    const tg = e.target && e.target.tagName;
+    if (tg === 'INPUT' || tg === 'TEXTAREA') return;     // dejar escribir el email
+    if (e.code === 'Space' || e.code === 'ArrowUp' || e.code === 'KeyW'){ e.preventDefault(); if (!e.repeat) flap(); }
+  });
+  $('stage').addEventListener('pointerdown', e => {
+    if (e.target.closest('.btn, input, form, a, button')) return;
+    e.preventDefault(); flap();
+  });
+  $('btnPlay').addEventListener('click', () => { lockUntil = 0; start(); });
+  $('btnAgain').addEventListener('click', () => { lockUntil = 0; start(); });
+  $('btnWa').addEventListener('click', () => emit('cta_whatsapp', { score }));
+
+  const btnMute = $('btnMute');
+  function paintMute(){
+    const m = Sfx.isMuted();
+    btnMute.textContent = m ? '🔇' : '🔊';
+    btnMute.setAttribute('aria-label', m ? 'Activar sonido' : 'Silenciar sonido');
+  }
+  btnMute.addEventListener('click', () => { Sfx.toggle(); paintMute(); btnMute.blur(); });
+  paintMute();
+
+  /* ----------------- captura de email ----------------- */
+  const leadForm = $('leadForm'), leadEmail = $('leadEmail'), leadSend = $('leadSend');
+  const leadMsg = $('leadMsg'), leadHp = $('leadHp');
+  $('leadNote').textContent = CONFIG.leadNote;
+
+  function setMsg(text, kind){ leadMsg.textContent = text; leadMsg.className = 'msg' + (kind ? ' ' + kind : ''); }
+
+  function finishLead(email){
+    leadDone = true; formOpen = false;
+    leadForm.hidden = true;
+    setMsg('¡Listo! Te escribimos a ' + email + ' en breve.', 'ok');
+    emit('lead', { score: leadCtx.score, services: leadCtx.services });
+    // Conversión para GA4 / Google Ads si la página que lo contiene tiene gtag (mismo origen)
+    try {
+      const gt = window.gtag || (window.parent && window.parent.gtag);
+      if (gt) gt('event', 'generate_lead', { event_category: 'juego_flyer', value: leadCtx.score });
+    } catch(e){}
+  }
+
+  leadForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (leadSend.disabled) return;
+    const email = leadEmail.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ setMsg('Revisá el email: parece incompleto.', 'err'); return; }
+    if (leadHp.value){ finishLead(email); return; }                 // trampa para bots: no se envía
+    if (!CONFIG.leadEndpoint){ setMsg('El formulario no está configurado.', 'err'); return; }
+    leadSend.disabled = true; setMsg('Enviando…', '');
+    const ctl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    const timer = ctl ? setTimeout(() => ctl.abort(), 10000) : null;
+    try {
+      const res = await fetch(CONFIG.leadEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          email,
+          origen: 'juego-flyer',
+          puntaje: leadCtx.score,
+          servicios_juntados: leadCtx.services,
+          _subject: 'Juego Flyer: canje de diagnóstico inicial sin cargo',
+          mensaje: 'Canje de diagnóstico inicial sin cargo desde el juego (' + leadCtx.score + ' puntos).'
+        }),
+        signal: ctl ? ctl.signal : undefined
+      });
+      if (!res.ok) throw new Error('http ' + res.status);
+      finishLead(email);
+    } catch(err){
+      leadSend.disabled = false;
+      setMsg('No pudimos enviarlo ahora. Probá de nuevo o escribinos por WhatsApp.', 'err');
+      emit('lead_error');
+    } finally { if (timer) clearTimeout(timer); }
+  });
+})();
+</script>
+</body>
+</html>

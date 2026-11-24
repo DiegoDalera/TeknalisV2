@@ -96,6 +96,7 @@ textarea {
 .section-contact .tf-btn-2,
 .section-cta .tf-btn-2,
 .section-blog-home .tf-btn-2,
+.tek-products-mini .tf-btn-2,
 .blog-card .tf-btn-2,
 .featured-post .tf-btn-2 {
   color: #0f172a;
@@ -110,6 +111,7 @@ textarea {
 .section-contact .tf-btn-2:hover,
 .section-cta .tf-btn-2:hover,
 .section-blog-home .tf-btn-2:hover,
+.tek-products-mini .tf-btn-2:hover,
 .blog-card .tf-btn-2:hover,
 .featured-post .tf-btn-2:hover {
   color: #ffffff;
@@ -2666,6 +2668,10 @@ footer .footer-logo img {
 /* Sección compacta de productos propios (home) */
 .tek-products-mini {
   padding-top: 8px;
+}
+
+.tek-products-mini p .tf-btn-2 {
+  margin-left: 12px;
 }
 
 .tek-products-mini-label {

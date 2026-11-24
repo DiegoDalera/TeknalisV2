@@ -1,0 +1,63 @@
+<svg width="1536" height="1024" viewBox="0 0 1536 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="screen"><rect x="0" y="0" width="400" height="844" rx="28"/></clipPath>
+    <linearGradient id="col" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#d4584f"/><stop offset="1" stop-color="#f87171"/>
+    </linearGradient>
+  </defs>
+  <rect width="1536" height="1024" fill="#0F172A"/>
+
+  <g transform="translate(568,90)">
+    <rect width="400" height="844" rx="28" fill="#141d38" stroke="#2a3655" stroke-width="1.5"/>
+    <g clip-path="url(#screen)">
+      <!-- grilla -->
+      <g stroke="#38bdf8" stroke-opacity="0.08" stroke-width="1">
+        <path d="M40 0V760M120 0V760M200 0V760M280 0V760M360 0V760"/>
+        <path d="M0 60H400M0 140H400M0 220H400M0 300H400M0 380H400M0 460H400M0 540H400M0 620H400M0 700H400"/>
+      </g>
+
+      <!-- encabezado -->
+      <circle cx="40" cy="44" r="7" fill="#38bdf8"/>
+      <text x="58" y="50" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1" fill="#8b95ad">TEKNALIS FLYER</text>
+      <text x="200" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="64" font-weight="800" fill="#e7ecf5">120</text>
+
+      <!-- columnas (primer portón) -->
+      <rect x="236" y="200" width="50" height="170" fill="url(#col)"/>
+      <rect x="226" y="346" width="70" height="30" rx="7" fill="#fb7185"/>
+      <text x="261" y="367" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#2a0a0a">404</text>
+      <rect x="236" y="560" width="50" height="200" fill="url(#col)"/>
+      <rect x="226" y="548" width="70" height="30" rx="7" fill="#fb7185"/>
+      <text x="261" y="569" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#2a0a0a">BUG</text>
+
+      <!-- moneda de servicio en el hueco -->
+      <circle cx="261" cy="462" r="22" fill="#fbbf24"/>
+      <text x="261" y="467" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#3b2a00">SEO</text>
+
+      <!-- segundo portón, asomando -->
+      <rect x="420" y="200" width="50" height="120" fill="url(#col)"/>
+
+      <!-- personaje -->
+      <g transform="translate(110,450) rotate(-14)">
+        <rect x="-22" y="-22" width="44" height="44" rx="11" fill="#38bdf8"/>
+        <text x="0" y="8" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="800" fill="#0F172A">T</text>
+        <rect x="6" y="-14" width="8" height="8" fill="#fff"/><rect x="10" y="-11" width="4" height="4" fill="#0F172A"/>
+        <path d="M-12 0 L-32 -18 L-6 8 Z" fill="#0ea5c7"/>
+      </g>
+
+      <!-- suelo -->
+      <rect x="0" y="760" width="400" height="90" fill="#1a2440"/>
+      <path d="M0 760H400" stroke="#38bdf8" stroke-width="2"/>
+
+      <!-- cartel de proyecto -->
+      <rect x="30" y="660" width="340" height="68" rx="12" fill="#1a2440" stroke="#38bdf8" stroke-width="1.5" opacity="0"/>
+    </g>
+  </g>
+
+  <!-- tarjeta lateral: el cartel de proyecto -->
+  <g transform="translate(1010,560)">
+    <rect width="330" height="84" rx="14" fill="#1a2440" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="20" y="28" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#38bdf8">PROYECTO REAL</text>
+    <text x="20" y="54" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#e7ecf5">Agenda de Turnos</text>
+    <text x="20" y="72" font-family="Arial, sans-serif" font-size="13" fill="#8b95ad">Producto propio · reservas online y panel</text>
+  </g>
+</svg>
