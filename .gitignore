@@ -1,0 +1,18 @@
+# Variables de entorno y secretos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Vercel
+.vercel/
+
+# Dependencias y builds
+node_modules/
+
+# Sistema / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
