@@ -2747,3 +2747,113 @@ footer .footer-logo img {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ============================================================
+   AUDITORÍA 24/11/2026 — Contraste WCAG AA y acordeón
+   Todas las combinaciones de abajo cumplen 4.5:1 (texto normal).
+   Antes: blanco sobre #0ea5e9 = 2.77:1 · #475569 sobre #0f172a = 2.36:1
+   ============================================================ */
+
+/* 1. Botones primarios: texto blanco sobre azul más oscuro (5.9:1) */
+.tf-btn,
+.teknalis-hero .tf-btn,
+.teknalis-cta .tf-btn,
+.section-cta .tf-btn {
+  background: #0369a1 !important;
+  border-color: #0369a1 !important;
+  color: #ffffff !important;
+}
+
+.tf-btn:hover,
+.teknalis-hero .tf-btn:hover,
+.teknalis-cta .tf-btn:hover,
+.section-cta .tf-btn:hover {
+  background: #075985 !important;
+  border-color: #075985 !important;
+  color: #ffffff !important;
+}
+
+.teknalis-hero .tf-btn {
+  box-shadow: 0 4px 20px rgba(3, 105, 161, 0.35) !important;
+}
+
+/* 2. Textos grises sobre fondo navy (#94a3b8 sobre #0f172a = 7:1) */
+.hero-areas,
+.teknalis-hero .hero-areas,
+.tek-top-label,
+.tek-footer-meta,
+.footer-left .text-secondary,
+.footer-bottom .text-secondary {
+  color: #94a3b8 !important;
+}
+
+/* Email del footer: en la home estaba en #0f172a sobre #0f172a (invisible)
+   y en el blog en blanco al 45% (4.48:1). Selector común a todas las páginas. */
+.tek-footer-email,
+.footer-left .text-secondary a {
+  color: #e2e8f0 !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tek-footer-email:hover,
+.footer-left .text-secondary a:hover {
+  color: #ffffff !important;
+}
+
+/* 3. Etiquetas ("Casos / proyectos", "Servicios", etc.) y enlaces azules
+   sobre fondo claro: #0369a1 */
+.heading-sub {
+  color: #0369a1 !important;
+}
+
+/* Sobre fondos oscuros se mantiene el celeste de marca */
+.teknalis-cta .heading-sub,
+.section-cta .heading-sub,
+.teknalis-hero .heading-sub {
+  color: #0ea5e9 !important;
+}
+
+.tek-nav-link.active,
+.section-related .type {
+  color: #0369a1 !important;
+}
+
+/* 4. "Leer artículo": más oscuro y subrayado (no depender solo del color) */
+.tek-read-more {
+  color: #0369a1 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+}
+
+.tek-read-more:hover {
+  color: #075985 !important;
+}
+
+/* 5. Numeración de servicios y proceso, y estrellas de testimonios */
+.section-services .accordion-title .num,
+.servicios-page .accordion-faq_item.style-1 .accordion-content .content .num {
+  color: #64748b !important;
+}
+
+.process-card .number .text-neutral-400 {
+  color: #475569 !important;
+}
+
+.process-card .number .text-neutral-200 {
+  color: #64748b !important;
+}
+
+.tek-testimonial-stars {
+  color: #d97706 !important;
+}
+
+/* 6. Acordeón: la barra negra (#18181B) del template aparecía detrás del
+   título activo. Se oculta; el título activo queda en azul sobre blanco. */
+.accordion-faq_item .accordion-action::before {
+  display: none !important;
+}
+
+/* contacto: rótulos del panel oscuro >= 4.5:1 */
+.panel-social-label,.tek-contact-panel .text-secondary{color:#94a3b8 !important}
