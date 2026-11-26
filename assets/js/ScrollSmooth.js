@@ -1,4 +1,6 @@
 !(function () {
+    // Respeta "reducir movimiento": no reemplaza el scroll nativo.
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var s,
         i,
         c,

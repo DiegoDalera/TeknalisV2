@@ -1,3 +1,13 @@
+// Textos de accesibilidad de Swiper en español (por defecto vienen en inglés).
+var tekSwiperA11y = {
+    prevSlideMessage: "Diapositiva anterior",
+    nextSlideMessage: "Diapositiva siguiente",
+    firstSlideMessage: "Esta es la primera diapositiva",
+    lastSlideMessage: "Esta es la última diapositiva",
+    paginationBulletMessage: "Ir a la diapositiva {{index}}",
+    slideLabelMessage: "{{index}} de {{slidesLength}}",
+};
+
 $(window).on("load", function () {
     $(".tf-swiper").each(function (index, element) {
         var $this = $(element);
@@ -43,6 +53,7 @@ $(window).on("load", function () {
         var clickSlide = $this.data("click-slide") ?? false;
 
         var swiperT = new Swiper($this[0], {
+            a11y: tekSwiperA11y,
             direction: direction,
             speed: speed,
             centeredSlides: centered,
@@ -142,6 +153,7 @@ $(window).on("load", function () {
 
 if ($(".section-testimonials").length > 0) {
     const thumbSwiper = new Swiper(".sw-main-image", {
+        a11y: tekSwiperA11y,
         slidesPerView: 1,
         watchSlidesProgress: true,
         watchSlidesVisibility: true,
@@ -156,6 +168,7 @@ if ($(".section-testimonials").length > 0) {
     });
 
     const mainSwiper = new Swiper(".swiper-testimonial", {
+        a11y: tekSwiperA11y,
         slidesPerView: 1,
         // spaceBetween: 20,
         pagination: {
@@ -180,6 +193,7 @@ if ($(".swiper-progressbar").length > 0) {
     let rafID = null;
 
     const swiper = new Swiper(".swiper-progressbar", {
+        a11y: tekSwiperA11y,
         loop: true,
         speed: 600,
         grabCursor: true,

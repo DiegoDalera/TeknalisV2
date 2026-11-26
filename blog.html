@@ -12,6 +12,8 @@
     </script>
 
 <meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js');addEventListener('load',function(){if(!window.gsap||!window.ScrollTrigger)document.documentElement.classList.remove('js')})</script>
+<link rel="preload" href="https://fonts.gstatic.com/s/urbanist/v18/L0x-DF02iFML4hGCyMqlbS0.woff2" as="font" type="font/woff2" crossorigin>
 <title>Blog de tecnología y automatización para PyMEs | Teknalis</title>
 <link href="https://www.teknalis.com.ar/blog.html" rel="canonical"/>
 <meta content="website" property="og:type"/>
@@ -42,7 +44,6 @@
 <link href="assets/icon/icomoon/style.css" rel="stylesheet"/>
 <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="assets/css/swiper-bundle.min.css" rel="stylesheet"/>
-<link href="assets/css/animate.css" rel="stylesheet"/>
 <link href="assets/css/styles.css" rel="stylesheet"/>
 <link href="assets/css/teknalis.css" rel="stylesheet"/>
 <link href="assets-teknalis/icon.png" rel="shortcut icon"/>
@@ -84,6 +85,7 @@
     </script>
 </head>
 <body class="counter-scroll blog-page">
+    <a class="tek-skip-link" href="#wrapper">Saltar al contenido</a>
 <canvas class="cursor-trail" id="trail" style="display: none;"></canvas>
 <button aria-label="Volver arriba" id="goTop">
 <span class="border-progress"></span>
@@ -131,7 +133,7 @@
 <div class="tek-header-main">
 <div class="tek-header-main-inner">
 <a aria-label="Teknalis" class="tek-logo" href="index.html">
-<img alt="Teknalis" src="assets-teknalis/logo-horizontal.png"/>
+<img width="1536" height="546" alt="Teknalis" src="assets-teknalis/logo-horizontal.webp"/>
 </a>
 <nav aria-label="Navegación principal" class="tek-nav" id="tekNav">
 <ul>
@@ -142,7 +144,7 @@
 </ul>
 </nav>
 <a class="tf-btn tek-header-btn d-lg-flex d-none" href="contacto.html">Hablemos de tu proyecto</a>
-<button aria-label="Abrir menú" class="tek-menu-toggle open-mb-menu d-lg-none" id="tekMenuToggle" type="button">
+<button aria-label="Abrir menú" class="tek-menu-toggle open-mb-menu d-lg-none" aria-expanded="false" aria-controls="tekMobileMenu" id="tekMenuToggle" type="button">
 <span></span>
 <span></span>
 <span></span>
@@ -150,7 +152,7 @@
 </div>
 </div>
 </header>
-<main id="wrapper">
+<main id="wrapper" tabindex="-1">
 <section class="section-hero teknalis-hero blog-hero" id="inicio">
 <div class="hero-image"></div>
 <div class="container">
@@ -252,7 +254,7 @@
 </div>
 </div>
 <div class="sidebar-panel sidebar-note">
-<img alt="Teknalis" loading="lazy" src="assets-teknalis/logo-isotipo.png"/>
+<img width="400" height="400" alt="Teknalis" loading="lazy" src="assets-teknalis/logo-isotipo.png"/>
 <p>Nuevo artículo cada semana sobre tecnología, automatización y presencia digital para
                                     PyMEs.</p>
 </div>
@@ -277,7 +279,7 @@
 <div class="container">
 <div class="footer-inner">
 <div class="footer-left">
-<a class="footer-logo" href="#inicio"><img alt="Teknalis" src="assets-teknalis/logo-horizontal-claro.webp"/></a>
+<a class="footer-logo" href="#inicio"><img width="1536" height="546" alt="Teknalis" src="assets-teknalis/logo-horizontal-claro.webp"/></a>
 <p class="text-secondary" style="margin-top:8px;font-size:13px;">Buenos Aires, Argentina<br/><a href="mailto:contacto@teknalis.com.ar" style="color:rgba(255,255,255,0.45);">contacto@teknalis.com.ar</a></p>
 </div>
 <div class="footer-right">
@@ -294,13 +296,13 @@
 </div>
 </footer>
 </main>
-<div class="offcanvas-menu">
+<div class="offcanvas-menu" id="tekMobileMenu">
 <div class="offcanvas-content">
 <div class="container h-100">
 <div class="offcanvas-content_wrapin">
 <div class="canvas_head">
-<a class="mb-logo" href="index.html#inicio"><img alt="Teknalis" src="assets-teknalis/logo-horizontal.png"/></a>
-<div class="btn-mobile-menu close-mb-menu text-caption link">
+<a class="mb-logo" href="index.html#inicio"><img width="1536" height="546" alt="Teknalis" src="assets-teknalis/logo-horizontal.webp"/></a>
+<div class="btn-mobile-menu close-mb-menu text-caption link" role="button" tabindex="0" aria-label="Cerrar menú">
 <i class="icon icon-times-solid"></i>
                             CERRAR
                         </div>

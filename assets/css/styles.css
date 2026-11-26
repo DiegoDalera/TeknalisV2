@@ -2911,7 +2911,7 @@ header.header-sticky {
     object-fit: bottom;
   }
 }
-.effectFade {
+.js .effectFade {
   opacity: 0;
 }
 

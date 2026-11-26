@@ -13,6 +13,8 @@
     </script>
 
   <meta charset="utf-8" />
+  <script>document.documentElement.classList.add('js');addEventListener('load',function(){if(!window.gsap||!window.ScrollTrigger)document.documentElement.classList.remove('js')})</script>
+  <link rel="preload" href="https://fonts.gstatic.com/s/urbanist/v18/L0x-DF02iFML4hGCyMqlbS0.woff2" as="font" type="font/woff2" crossorigin>
   <title>Servicios de tecnología para empresas | Teknalis</title>
   <meta content="Teknalis" name="author" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -50,7 +52,6 @@
   <link href="assets/icon/icomoon/style.css" rel="stylesheet" />
   <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="assets/css/swiper-bundle.min.css" rel="stylesheet" />
-  <link href="assets/css/animate.css" rel="stylesheet" />
   <link href="assets/css/styles.css" rel="stylesheet" />
   <link href="assets/css/teknalis.css" rel="stylesheet" />
   <link href="assets-teknalis/icon.png" rel="shortcut icon" />
@@ -94,6 +95,7 @@
 </head>
 
 <body class="counter-scroll servicios-page">
+    <a class="tek-skip-link" href="#wrapper">Saltar al contenido</a>
   <canvas class="cursor-trail" id="trail" style="display: none;"></canvas>
   <button aria-label="Volver arriba" id="goTop">
     <span class="border-progress"></span>
@@ -149,7 +151,7 @@
     <div class="tek-header-main">
       <div class="tek-header-main-inner">
         <a aria-label="Teknalis" class="tek-logo" href="index.html">
-          <img alt="Teknalis" src="assets-teknalis/logo-horizontal.png" />
+          <img width="1536" height="546" alt="Teknalis" src="assets-teknalis/logo-horizontal.webp" />
         </a>
         <nav aria-label="Navegación principal" class="tek-nav" id="tekNav">
           <ul>
@@ -160,7 +162,7 @@
           </ul>
         </nav>
         <a class="tf-btn tek-header-btn d-lg-flex d-none" href="contacto.html">Hablemos de tu proyecto</a>
-        <button aria-label="Abrir menú" class="tek-menu-toggle open-mb-menu d-lg-none" id="tekMenuToggle" type="button">
+        <button aria-label="Abrir menú" class="tek-menu-toggle open-mb-menu d-lg-none" aria-expanded="false" aria-controls="tekMobileMenu" id="tekMenuToggle" type="button">
           <span></span>
           <span></span>
           <span></span>
@@ -168,7 +170,7 @@
       </div>
     </div>
   </header>
-  <main id="wrapper">
+  <main id="wrapper" tabindex="-1">
     <section class="section-hero teknalis-hero servicios-hero" id="inicio">
       <div class="hero-image"></div>
       <div class="container">
@@ -211,7 +213,7 @@
         <div class="accordion-faq_list gap-32 servicios-accordion" id="accordion-services">
           <article class="accordion-faq_item style-1">
             <div role="heading" aria-level="3" class="accordion-heading"><div aria-controls="service-web" aria-expanded="true" class="accordion-action" data-bs-target="#service-web"
-              data-bs-toggle="collapse" role="button">
+              data-bs-toggle="collapse" role="button" tabindex="0">
               <div class="accordion-title">
                 Sitios web profesionales
                 <i class="icon icon-code-solid"></i>
@@ -241,7 +243,7 @@
           </article>
           <article class="accordion-faq_item style-1">
             <div role="heading" aria-level="3" class="accordion-heading"><div aria-controls="service-automation" aria-expanded="false" class="accordion-action collapsed"
-              data-bs-target="#service-automation" data-bs-toggle="collapse" role="button">
+              data-bs-target="#service-automation" data-bs-toggle="collapse" role="button" tabindex="0">
               <div class="accordion-title">
                 Automatizaciones
                 <i class="icon icon-clipboard-check-solid"></i>
@@ -273,7 +275,7 @@
           </article>
           <article class="accordion-faq_item style-1">
             <div role="heading" aria-level="3" class="accordion-heading"><div aria-controls="service-ia" aria-expanded="false" class="accordion-action collapsed"
-              data-bs-target="#service-ia" data-bs-toggle="collapse" role="button">
+              data-bs-target="#service-ia" data-bs-toggle="collapse" role="button" tabindex="0">
               <div class="accordion-title">
                 Inteligencia artificial aplicada
                 <i class="icon icon-search-solid"></i>
@@ -303,7 +305,7 @@
           </article>
           <article class="accordion-faq_item style-1">
             <div role="heading" aria-level="3" class="accordion-heading"><div aria-controls="service-integraciones" aria-expanded="false" class="accordion-action collapsed"
-              data-bs-target="#service-integraciones" data-bs-toggle="collapse" role="button">
+              data-bs-target="#service-integraciones" data-bs-toggle="collapse" role="button" tabindex="0">
               <div class="accordion-title">
                 Integraciones y sistemas internos
                 <i class="icon icon-chart-line-solid"></i>
@@ -560,7 +562,7 @@
       <div class="container">
         <div class="footer-inner">
           <div class="footer-left">
-            <a class="footer-logo" href="#inicio"><img alt="Teknalis"
+            <a class="footer-logo" href="#inicio"><img width="1536" height="546" alt="Teknalis"
                 src="assets-teknalis/logo-horizontal-claro.webp" /></a>
             <p class="text-secondary tek-footer-meta">Buenos Aires, Argentina<br /><a class="tek-footer-email"
                 href="mailto:contacto@teknalis.com.ar">contacto@teknalis.com.ar</a></p>
@@ -579,14 +581,14 @@
       </div>
     </footer>
   </main>
-  <div class="offcanvas-menu">
+  <div class="offcanvas-menu" id="tekMobileMenu">
     <div class="offcanvas-content">
       <div class="container h-100">
         <div class="offcanvas-content_wrapin">
           <div class="canvas_head">
-            <a class="mb-logo" href="index.html#inicio"><img alt="Teknalis"
-                src="assets-teknalis/logo-horizontal.png" /></a>
-            <div class="btn-mobile-menu close-mb-menu text-caption link">
+            <a class="mb-logo" href="index.html#inicio"><img width="1536" height="546" alt="Teknalis"
+                src="assets-teknalis/logo-horizontal.webp" /></a>
+            <div class="btn-mobile-menu close-mb-menu text-caption link" role="button" tabindex="0" aria-label="Cerrar menú">
               <i class="icon icon-times-solid"></i>
               CERRAR
             </div>

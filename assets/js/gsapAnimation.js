@@ -242,6 +242,11 @@
 
     var scrollEffectFade = () => {
         if ($(".effectFade").length) {
+            // Con movimiento reducido el contenido se muestra directamente.
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                gsap.set(".effectFade", { autoAlpha: 1, clearProps: "transform" });
+                return;
+            }
             gsap.registerPlugin(ScrollTrigger);
 
             document.querySelectorAll(".effectFade").forEach((el) => {

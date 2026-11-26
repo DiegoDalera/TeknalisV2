@@ -2083,7 +2083,8 @@ body {
 .form-contact input:focus,
 .form-contact textarea:focus {
   border-color: #0ea5e9 !important;
-  outline: none !important;
+  outline: 2px solid #0284c7 !important;
+  outline-offset: 2px !important;
   box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12) !important;
   background: #ffffff !important;
 }
@@ -2603,7 +2604,8 @@ footer .footer-logo img {
 
 .form-contact select:focus {
   border-color: #0ea5e9 !important;
-  outline: none !important;
+  outline: 2px solid #0284c7 !important;
+  outline-offset: 2px !important;
   box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12) !important;
   background: #ffffff !important;
 }
@@ -2857,3 +2859,80 @@ footer .footer-logo img {
 
 /* contacto: rótulos del panel oscuro >= 4.5:1 */
 .panel-social-label,.tek-contact-panel .text-secondary{color:#94a3b8 !important}
+
+/* ---------------------------------------------------------------------------
+   Auditoría 2026-11: accesibilidad y rendimiento
+   --------------------------------------------------------------------------- */
+
+/* Animaciones que se usaban de animate.css (el resto del archivo no se usaba) */
+@keyframes infiniteScroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+@keyframes infiniteScrollRight {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+/* Las imágenes con width/height en el HTML reservan su espacio (evita CLS)
+   sin deformarse. :where() deja la especificidad en 0, así cualquier regla
+   existente que fije una altura sigue mandando. */
+:where(img[width][height]) {
+  height: auto;
+}
+
+/* Enlace para saltar al contenido: visible solo al recibir foco */
+.tek-skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 10000;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: #0f172a;
+  color: #ffffff !important;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+}
+.tek-skip-link:focus {
+  transform: translateY(0);
+}
+#wrapper:focus {
+  outline: none;
+}
+
+/* Indicador de foco para teclado (contraste >= 3:1 sobre blanco y #0f172a) */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible,
+summary:focus-visible {
+  outline: 2px solid #0284c7 !important;
+  outline-offset: 3px !important;
+}
+.tek-header-top a:focus-visible,
+.offcanvas-menu a:focus-visible,
+.offcanvas-menu [role="button"]:focus-visible,
+footer a:focus-visible {
+  outline-color: #38bdf8 !important;
+}
+
+/* Movimiento reducido: sin animaciones de entrada ni desplazamientos largos */
+@media (prefers-reduced-motion: reduce) {
+  .effectFade,
+  .js .effectFade {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

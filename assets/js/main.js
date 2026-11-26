@@ -193,16 +193,43 @@
     /* Open Menu
     -------------------------------------------------------------------------*/
     var openMbMenu = () => {
+        var closeMenu = function (returnFocus) {
+            if (!$(".offcanvas-menu").hasClass("show")) return;
+            $(".offcanvas-menu").removeClass("show");
+            $("body").removeClass("overflow-hidden");
+            $(".open-mb-menu").attr("aria-expanded", "false");
+            if (returnFocus) $(".open-mb-menu").trigger("focus");
+        };
+
         $(".open-mb-menu").on("click", function (event) {
             event.preventDefault();
             $(".offcanvas-menu").addClass("show");
             $("body").addClass("overflow-hidden");
+            $(this).attr("aria-expanded", "true");
+            // Espera a que termine la transición del panel para poder enfocarlo.
+            setTimeout(function () {
+                $(".offcanvas-menu .close-mb-menu").first().trigger("focus");
+            }, 350);
         });
 
         $(".close-mb-menu").on("click", function (event) {
             event.preventDefault();
-            $(".offcanvas-menu").removeClass("show");
-            $("body").removeClass("overflow-hidden");
+            closeMenu(true);
+        });
+
+        $(document).on("keydown", function (event) {
+            if (event.key === "Escape") closeMenu(true);
+        });
+    };
+
+    /* Elementos con role="button" que no son <button>: Enter y Espacio
+       los activan igual que un clic (acordeones, cerrar menú). */
+    var keyboardButtons = () => {
+        $(document).on("keydown", '[role="button"]:not(button):not(a)', function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                this.click();
+            }
         });
     };
     /* switchprice
@@ -326,6 +353,7 @@
         goTop();
         settingColor();
         openMbMenu();
+        keyboardButtons();
         switchPrice();
         services_btn();
         counter();

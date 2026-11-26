@@ -12,6 +12,8 @@
     </script>
 
     <meta charset="utf-8">
+    <script>document.documentElement.classList.add('js');addEventListener('load',function(){if(!window.gsap||!window.ScrollTrigger)document.documentElement.classList.remove('js')})</script>
+    <link rel="preload" href="https://fonts.gstatic.com/s/urbanist/v18/L0x-DF02iFML4hGCyMqlbS0.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="canonical" href="https://www.teknalis.com.ar/blog/cuanto-cuesta-una-tienda-online.html">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Cuanto cuesta una tienda online en Argentina | Teknalis">
@@ -47,7 +49,6 @@
     <link rel="stylesheet" href="../assets/icon/icomoon/style.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="../assets/css/animate.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/teknalis.css">
     <link rel="shortcut icon" href="../assets-teknalis/icon.png">
@@ -79,6 +80,7 @@
 </head>
 
 <body class="counter-scroll article-page">
+    <a class="tek-skip-link" href="#wrapper">Saltar al contenido</a>
     <canvas class="cursor-trail" id="trail" style="display: none;"></canvas>
 
     <button id="goTop" aria-label="Volver arriba"><span class="border-progress"></span><span class="ic-wrap"><span
@@ -131,7 +133,7 @@
         <div class="tek-header-main">
             <div class="tek-header-main-inner">
                 <a href="../index.html" class="tek-logo" aria-label="Teknalis">
-                    <img src="../assets-teknalis/logo-horizontal.png" alt="Teknalis">
+                    <img width="1536" height="546" src="../assets-teknalis/logo-horizontal.webp" alt="Teknalis">
                 </a>
                 <nav class="tek-nav" id="tekNav" aria-label="Navegación principal">
                     <ul>
@@ -142,7 +144,7 @@
                     </ul>
                 </nav>
                 <a href="../contacto.html" class="tf-btn tek-header-btn d-lg-flex d-none">Hablemos</a>
-                <button type="button" class="tek-menu-toggle open-mb-menu d-lg-none" aria-label="Abrir menú"
+                <button type="button" class="tek-menu-toggle open-mb-menu d-lg-none" aria-expanded="false" aria-controls="tekMobileMenu" aria-label="Abrir menú"
                     id="tekMenuToggle">
                     <span></span>
                     <span></span>
@@ -153,7 +155,7 @@
 
     </header>
 
-    <main id="wrapper">
+    <main id="wrapper" tabindex="-1">
 
 
         <section class="section-article flat-spacing">
@@ -246,7 +248,7 @@
             <div class="container">
                 <div class="footer-inner">
                     <div class="footer-left">
-                        <a href="../index.html#inicio" class="footer-logo"><img
+                        <a href="../index.html#inicio" class="footer-logo"><img width="1536" height="546"
                                 src="../assets-teknalis/logo-horizontal-claro.webp" alt="Teknalis"></a>
                         <p class="text-secondary" style="margin-top:8px;font-size:13px;">Buenos Aires, Argentina<br><a
                                 href="mailto:contacto@teknalis.com.ar"
@@ -266,14 +268,14 @@
         </footer>
     </main>
 
-    <div class="offcanvas-menu">
+    <div class="offcanvas-menu" id="tekMobileMenu">
         <div class="offcanvas-content">
             <div class="container h-100">
                 <div class="offcanvas-content_wrapin">
                     <div class="canvas_head">
-                        <a href="../index.html#inicio" class="mb-logo"><img src="../assets-teknalis/logo-horizontal-claro.webp"
+                        <a href="../index.html#inicio" class="mb-logo"><img width="1536" height="546" src="../assets-teknalis/logo-horizontal-claro.webp"
                                 alt="Teknalis"></a>
-                        <div class="btn-mobile-menu close-mb-menu text-caption link"><i
+                        <div class="btn-mobile-menu close-mb-menu text-caption link" role="button" tabindex="0" aria-label="Cerrar menú"><i
                                 class="icon icon-times-solid"></i> CERRAR</div>
                     </div>
                     <div class="canvas_center">

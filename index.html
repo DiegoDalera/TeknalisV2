@@ -12,6 +12,8 @@
     </script>
 
     <meta charset="utf-8">
+    <script>document.documentElement.classList.add('js');addEventListener('load',function(){if(!window.gsap||!window.ScrollTrigger)document.documentElement.classList.remove('js')})</script>
+    <link rel="preload" href="https://fonts.gstatic.com/s/urbanist/v18/L0x-DF02iFML4hGCyMqlbS0.woff2" as="font" type="font/woff2" crossorigin>
     <title>Teknalis | Webs, automatizaciones e inteligencia artificial</title>
     <meta name="author" content="Teknalis">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,7 +50,6 @@
     <link rel="stylesheet" href="assets/icon/icomoon/style.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/teknalis.css">
 
@@ -76,6 +77,7 @@
 </head>
 
 <body class="counter-scroll">
+    <a class="tek-skip-link" href="#wrapper">Saltar al contenido</a>
     <canvas class="cursor-trail" id="trail" style="display: none;"></canvas>
 
     <button id="goTop" aria-label="Volver arriba">
@@ -132,7 +134,7 @@
         <div class="tek-header-main">
             <div class="tek-header-main-inner">
                 <a href="index.html" class="tek-logo" aria-label="Teknalis">
-                    <img src="assets-teknalis/logo-horizontal.png" alt="Teknalis">
+                    <img width="1536" height="546" src="assets-teknalis/logo-horizontal.webp" alt="Teknalis">
                 </a>
                 <nav class="tek-nav" id="tekNav" aria-label="Navegación principal">
                     <ul>
@@ -143,7 +145,7 @@
                     </ul>
                 </nav>
                 <a href="contacto.html" class="tf-btn tek-header-btn d-lg-flex d-none">Hablemos de tu proyecto</a>
-                <button type="button" class="tek-menu-toggle open-mb-menu d-lg-none" aria-label="Abrir menú"
+                <button type="button" class="tek-menu-toggle open-mb-menu d-lg-none" aria-expanded="false" aria-controls="tekMobileMenu" aria-label="Abrir menú"
                     id="tekMenuToggle">
                     <span></span>
                     <span></span>
@@ -154,7 +156,7 @@
 
     </header>
 
-    <main id="wrapper">
+    <main id="wrapper" tabindex="-1">
 
 
         <section id="inicio" class="section-hero teknalis-hero">
@@ -199,7 +201,7 @@
                     <a href="casos/et-consultores.html" class="featured-works-item effectFade fadeUp no-div">
                         <div class="image">
                             <picture>
-                                <source srcset="assets-teknalis/et_consultores_mockup.webp" type="image/webp"><img
+                                <source srcset="assets-teknalis/et_consultores_mockup.webp" type="image/webp"><img width="1536" height="1024"
                                     src="assets-teknalis/et_consultores_mockup.webp" alt="ET Consultores" loading="lazy">
                             </picture><span class="view-project">Ver proyecto <i
                                     class="icon icon-long-arrow-alt-right-solid"></i></span>
@@ -229,7 +231,7 @@
                     <a href="casos/estudio-tonnelier.html" class="featured-works-item effectFade fadeUp">
                         <div class="image">
                             <picture>
-                                <source srcset="assets-teknalis/tonnelier_mockup.webp" type="image/webp"><img
+                                <source srcset="assets-teknalis/tonnelier_mockup.webp" type="image/webp"><img width="1536" height="1024"
                                     src="assets-teknalis/tonnelier_mockup.webp" alt="Estudio Tonnelier" loading="lazy">
                             </picture><span class="view-project">Ver proyecto <i
                                     class="icon icon-long-arrow-alt-right-solid"></i></span>
@@ -258,7 +260,7 @@
                     <a href="casos/inaes.html" class="featured-works-item effectFade fadeUp">
                         <div class="image">
                             <picture>
-                                <source srcset="assets-teknalis/inaes_mockup.webp" type="image/webp"><img
+                                <source srcset="assets-teknalis/inaes_mockup.webp" type="image/webp"><img width="1536" height="1024"
                                     src="assets-teknalis/inaes_mockup.webp" alt="INAES" loading="lazy">
                             </picture><span class="view-project">Ver proyecto <i
                                     class="icon icon-long-arrow-alt-right-solid"></i></span>
@@ -304,7 +306,7 @@
                 </div>
                 <div class="tek-products-mini-grid">
                     <a href="casos/agenda-turnos.html" class="tek-products-mini-card effectFade fadeUp">
-                        <img src="assets-teknalis/agenda_turnos_mockup.svg" alt="Agenda de Turnos" loading="lazy">
+                        <img width="1536" height="1024" src="assets-teknalis/agenda_turnos_mockup.svg" alt="Agenda de Turnos" loading="lazy">
                         <div class="tek-products-mini-info">
                             <h3>Agenda de Turnos</h3>
                             <p>Reservas online, disponibilidad en tiempo real y panel de gestión.</p>
@@ -312,7 +314,7 @@
                         <i class="icon icon-long-arrow-alt-right-solid" aria-hidden="true"></i>
                     </a>
                     <a href="casos/asistente-ia.html" class="tek-products-mini-card effectFade fadeUp">
-                        <img src="assets-teknalis/asistente_ia_mockup.svg" alt="Asistente con IA" loading="lazy">
+                        <img width="1536" height="1024" src="assets-teknalis/asistente_ia_mockup.svg" alt="Asistente con IA" loading="lazy">
                         <div class="tek-products-mini-info">
                             <h3>Asistente con IA</h3>
                             <p>Responde consultas frecuentes las 24 horas y puede derivar la conversación a una
@@ -321,7 +323,7 @@
                         <i class="icon icon-long-arrow-alt-right-solid" aria-hidden="true"></i>
                     </a>
                     <a href="demos/juego-flyer.html" class="tek-products-mini-card effectFade fadeUp" style="grid-column: 1 / -1;">
-                        <img src="assets-teknalis/juego_flyer_mockup.svg" alt="Teknalis Flyer, minijuego para sitios web" loading="lazy">
+                        <img width="1536" height="1024" src="assets-teknalis/juego_flyer_mockup.svg" alt="Teknalis Flyer, minijuego para sitios web" loading="lazy">
                         <div class="tek-products-mini-info">
                             <h3>Minijuego para tu marca</h3>
                             <p>Jugalo ahora: atrae visitantes, muestra tus servicios y captura contactos.</p>
@@ -361,7 +363,7 @@
                         <div class="accordion-faq_list" id="accordion-services">
                             <div class="accordion-faq_item effectFade fadeUp">
                                 <div role="heading" aria-level="3" class="accordion-heading"><div class="accordion-action active-img" data-bs-target="#service-1" role="button"
-                                    data-bs-toggle="collapse" aria-controls="service-1" aria-expanded="true">
+                                    data-bs-toggle="collapse" aria-controls="service-1" aria-expanded="true" tabindex="0">
                                     <div class="accordion-title">Sitios web profesionales <div class="text-body-1 num">
                                             (01)</div>
                                     </div>
@@ -385,7 +387,7 @@
                             </div>
                             <div class="accordion-faq_item effectFade fadeUp">
                                 <div role="heading" aria-level="3" class="accordion-heading"><div class="accordion-action collapsed" data-bs-target="#service-2" role="button"
-                                    data-bs-toggle="collapse" aria-controls="service-2" aria-expanded="false">
+                                    data-bs-toggle="collapse" aria-controls="service-2" aria-expanded="false" tabindex="0">
                                     <div class="accordion-title">Automatizaciones <div class="text-body-1 num">(02)
                                         </div>
                                     </div>
@@ -409,7 +411,7 @@
                             </div>
                             <div class="accordion-faq_item effectFade fadeUp">
                                 <div role="heading" aria-level="3" class="accordion-heading"><div class="accordion-action collapsed" data-bs-target="#service-3" role="button"
-                                    data-bs-toggle="collapse" aria-controls="service-3" aria-expanded="false">
+                                    data-bs-toggle="collapse" aria-controls="service-3" aria-expanded="false" tabindex="0">
                                     <div class="accordion-title">Inteligencia artificial aplicada <div
                                             class="text-body-1 num">(03)</div>
                                     </div>
@@ -433,7 +435,7 @@
                             </div>
                             <div class="accordion-faq_item effectFade fadeUp">
                                 <div role="heading" aria-level="3" class="accordion-heading"><div class="accordion-action collapsed" data-bs-target="#service-4" role="button"
-                                    data-bs-toggle="collapse" aria-controls="service-4" aria-expanded="false">
+                                    data-bs-toggle="collapse" aria-controls="service-4" aria-expanded="false" tabindex="0">
                                     <div class="accordion-title">Integraciones y sistemas internos <div
                                             class="text-body-1 num">(04)</div>
                                     </div>
@@ -718,7 +720,7 @@
             <div class="container">
                 <div class="footer-inner">
                     <div class="footer-left">
-                        <a href="index.html" class="footer-logo"><img src="assets-teknalis/logo-horizontal-claro.webp"
+                        <a href="index.html" class="footer-logo"><img width="1536" height="546" src="assets-teknalis/logo-horizontal-claro.webp"
                                 alt="Teknalis"></a>
                         <p class="text-secondary tek-footer-meta">Buenos Aires, Argentina<br><a
                                 href="mailto:contacto@teknalis.com.ar"
@@ -740,14 +742,14 @@
 
     </main>
 
-    <div class="offcanvas-menu">
+    <div class="offcanvas-menu" id="tekMobileMenu">
         <div class="offcanvas-content">
             <div class="container h-100">
                 <div class="offcanvas-content_wrapin">
                     <div class="canvas_head">
-                        <a href="index.html" class="mb-logo"><img src="assets-teknalis/logo-horizontal-claro.webp"
+                        <a href="index.html" class="mb-logo"><img width="1536" height="546" src="assets-teknalis/logo-horizontal-claro.webp"
                                 alt="Teknalis"></a>
-                        <div class="btn-mobile-menu close-mb-menu text-caption link">
+                        <div class="btn-mobile-menu close-mb-menu text-caption link" role="button" tabindex="0" aria-label="Cerrar menú">
                             <i class="icon icon-times-solid"></i>
                             CERRAR
                         </div>
